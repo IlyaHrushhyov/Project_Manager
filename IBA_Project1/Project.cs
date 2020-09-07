@@ -8,6 +8,12 @@ namespace IBA_Project1
 {
     class Project
     {
+        public Project(string name)
+        {
+            Name = name;
+            Check = false;
+        }
+
         // PK
         public int Id { get; set; }
         public string Name { get; set; }

@@ -23,7 +23,16 @@ namespace IBA_Project1
         public MainWindow()
         {
             InitializeComponent();
+            /*using (Context db = new Context())
+            {
+                Project project1 = new Project("Create new team");
 
+                db.Projects.Add(project1);
+                db.SaveChanges();
+            }*/
+            
+            
+            
         }
     }
 }
