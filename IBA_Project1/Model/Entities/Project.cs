@@ -18,5 +18,7 @@ namespace IBA_Project1
         public int Id { get; set; }
         public string Name { get; set; }
         public bool Check { get; set; }
+
+        public virtual ICollection<Task> Tasks { get; set; }
     }
 }
