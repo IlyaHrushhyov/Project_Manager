@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using IBA_Project1.Model.Entities;
+using System.Data.Entity;
 
 namespace IBA_Project1
 {
@@ -9,5 +10,6 @@ namespace IBA_Project1
         { }
 
         public DbSet<Project> Projects { get; set; }
+        public DbSet<Objective> Objectives { get; set; } 
     }
 }

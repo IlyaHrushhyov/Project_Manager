@@ -72,8 +72,25 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Migrations\202009071956234_InitialCreate.cs" />
+    <Compile Include="Migrations\202009071956234_InitialCreate.designer.cs">
+      <DependentUpon>202009071956234_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009111909577_AddNewTable.cs" />
+    <Compile Include="Migrations\202009111909577_AddNewTable.designer.cs">
+      <DependentUpon>202009111909577_AddNewTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009111912442_DeleteCheckProperty.cs" />
+    <Compile Include="Migrations\202009111912442_DeleteCheckProperty.designer.cs">
+      <DependentUpon>202009111912442_DeleteCheckProperty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009111947211_RenameProperty.cs" />
+    <Compile Include="Migrations\202009111947211_RenameProperty.designer.cs">
+      <DependentUpon>202009111947211_RenameProperty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Context.cs" />
-    <Compile Include="Model\Entities\Task.cs" />
+    <Compile Include="Model\Entities\Objective.cs" />
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -94,11 +111,24 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Migrations\202009071956234_InitialCreate.resx">
+      <DependentUpon>202009071956234_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009111909577_AddNewTable.resx">
+      <DependentUpon>202009111909577_AddNewTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009111912442_DeleteCheckProperty.resx">
+      <DependentUpon>202009111912442_DeleteCheckProperty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009111947211_RenameProperty.resx">
+      <DependentUpon>202009111947211_RenameProperty.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="Model\packages.config" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
