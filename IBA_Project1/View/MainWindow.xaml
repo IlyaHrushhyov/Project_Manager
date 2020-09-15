@@ -4,9 +4,29 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:IBA_Project1"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        mc:Ignorable="d" FontFamily="Segoe UI Light"
+        Title="Project manager" Height="450" Width="800">
+    <TabControl x:Name="Manager">
+        <TabItem x:Name="projectsTab">
+            <TabItem.Header>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="3">Проекты</TextBlock>
+                </StackPanel>
+            </TabItem.Header>
+            <TabItem.Content>
+                <StackPanel>
+                    <RadioButton IsChecked="True">Do1</RadioButton>
+                    <RadioButton>Do2</RadioButton>
+                    <RadioButton>Do3</RadioButton>
+                </StackPanel>
+            </TabItem.Content>
+        </TabItem>
+        <TabItem x:Name="tabletsTab">
+            <TabItem.Header>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="3">Задачи</TextBlock>
+                </StackPanel>
+            </TabItem.Header>
+        </TabItem>
+    </TabControl>
 </Window>
