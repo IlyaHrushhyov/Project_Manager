@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="IBA_Project1.View.UserControl"
+﻿<UserControl x:Class="IBA_Project1.View.UControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 

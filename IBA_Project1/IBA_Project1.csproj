@@ -65,8 +65,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ViewModel\DataManaging.cs" />
-    <Compile Include="View\UserControl.xaml.cs">
-      <DependentUpon>UserControl.xaml</DependentUpon>
+    <Compile Include="View\UControl.xaml.cs">
+      <DependentUpon>UControl.xaml</DependentUpon>
     </Compile>
     <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -99,7 +99,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="View\UserControl.xaml">
+    <Page Include="View\UControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

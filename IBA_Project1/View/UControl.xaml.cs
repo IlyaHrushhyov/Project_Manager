@@ -18,9 +18,9 @@ namespace IBA_Project1.View
     /// <summary>
     /// Interaction logic for UserControl.xaml
     /// </summary>
-    public partial class UserControl : UserControl
+    public partial class UControl : UserControl
     {
-        public UserControl()
+        public UControl()
         {
             InitializeComponent();
         }
