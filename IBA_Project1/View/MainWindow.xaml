@@ -13,7 +13,7 @@
             <TabItem x:Name="projectsTab">
                 <TabItem.Header>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Margin="3">Проекты</TextBlock>
+                        <TextBlock Margin="3">Projects</TextBlock>
                     </StackPanel>
                 </TabItem.Header>
                 <local:UControl></local:UControl>
@@ -21,7 +21,7 @@
             <TabItem x:Name="tabletsTab">
                 <TabItem.Header>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Margin="3">Задачи</TextBlock>
+                        <TextBlock Margin="3">Objectives</TextBlock>
                     </StackPanel>
                 </TabItem.Header>
                 <local:UControl></local:UControl>

@@ -64,7 +64,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ViewModel\DataManaging.cs" />
+    <Compile Include="ViewModel\ViewModel.cs" />
     <Compile Include="View\UControl.xaml.cs">
       <DependentUpon>UControl.xaml</DependentUpon>
     </Compile>
