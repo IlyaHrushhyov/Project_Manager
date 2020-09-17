@@ -22,6 +22,8 @@
                 <TabItem.Header>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Margin="3">Objectives</TextBlock>
+                        
+
                     </StackPanel>
                 </TabItem.Header>
                 <local:UControl></local:UControl>

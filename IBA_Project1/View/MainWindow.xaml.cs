@@ -1,4 +1,6 @@
-﻿using System;
+﻿using IBA_Project1.View;
+using IBA_Project1.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -30,9 +32,12 @@ namespace IBA_Project1
                 db.Projects.Add(project1);
                 db.SaveChanges();
             }*/
+
+            DbAccess dbAccess = new DbAccess();
+            dbAccess.GetProjects();
             
-            
-            
+            /*UControl uControl = new UControl();
+            uControl.projectsGrid.ItemsSource = dbAccess.GetProjects();*/
         }
     }
 }

@@ -7,9 +7,15 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <ListBox x:Name="lbMain">
-            <TextBlock FontWeight="Bold" TextDecorations="Underline" Text="Projects" />
-            
-        </ListBox>       
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <DataGrid ItemsSource="{Binding Source=Projects}" AutoGenerateColumns="False" x:Name="projectsGrid">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Path = Name}" Header="Name" Width="100"/>
+                
+            </DataGrid.Columns>
+        </DataGrid>       
     </Grid>
 </UserControl>
