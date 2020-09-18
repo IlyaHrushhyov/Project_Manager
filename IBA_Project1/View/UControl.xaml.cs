@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Linq;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using IBA_Project1.ViewModel;
 
 namespace IBA_Project1.View
 {
@@ -23,6 +25,8 @@ namespace IBA_Project1.View
         public UControl()
         {
             InitializeComponent();
+            DbAccess dbAccess = new DbAccess();
+            this.projectsGrid.ItemsSource = dbAccess.GetProjects();
         }
     }
 }

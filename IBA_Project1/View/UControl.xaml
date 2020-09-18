@@ -11,9 +11,9 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <DataGrid ItemsSource="{Binding Source=Projects}" AutoGenerateColumns="False" x:Name="projectsGrid">
+        <DataGrid AutoGenerateColumns="False" x:Name="projectsGrid">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Path = Name}" Header="Name" Width="100"/>
+                <DataGridTextColumn Binding="{Binding Name}" Header="Name" Width="100"/>
                 
             </DataGrid.Columns>
         </DataGrid>       
