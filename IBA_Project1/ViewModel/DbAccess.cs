@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data.Common;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
@@ -12,10 +13,10 @@ namespace IBA_Project1.ViewModel
 {
     class DbAccess
     {
-        
+        Context context = new Context();
         public List<Project> GetProjects()
         {
-            Context context = new Context();
+            //Context context = new Context();
             context.Projects.Load();
             List<Project> projects = context.Projects.Local.ToList();
             return projects;
@@ -26,6 +27,13 @@ namespace IBA_Project1.ViewModel
             context.Projects.Load();
             var objectives = context.Objectives.Local.ToList();
             return objectives;
+        }
+
+        public void Add()
+        {
+            Project project = new Project();
+
+            context.Projects.Add(project);
         }
     }
 }

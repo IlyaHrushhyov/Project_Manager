@@ -16,17 +16,19 @@
                         <TextBlock Margin="3">Projects</TextBlock>
                     </StackPanel>
                 </TabItem.Header>
-                <local:UControl></local:UControl>
+                <local:UControlProjects x:Name="userControlProjects" Text="{Binding Projects}" ButtonText="{Binding MyButton}></local:UControlProjects>
+                
+                
             </TabItem>
             <TabItem x:Name="tabletsTab">
                 <TabItem.Header>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Margin="3">Objectives</TextBlock>
-                        
-
                     </StackPanel>
                 </TabItem.Header>
-                <local:UControl></local:UControl>
+
+                <local:UControlProjects></local:UControlProjects>
+
             </TabItem>
         </TabControl>
     </Grid>
