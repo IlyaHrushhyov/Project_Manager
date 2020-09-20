@@ -21,6 +21,9 @@ namespace IBA_Project1.ViewModel
             List<Project> projects = context.Projects.Local.ToList();
             return projects;
         }
+
+       
+
         public List<Objective> GetObjectives()
         {
             Context context = new Context();

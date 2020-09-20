@@ -70,8 +70,8 @@
     <Compile Include="View\UpdatePage.xaml.cs">
       <DependentUpon>UpdatePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UControlProjects.xaml.cs">
-      <DependentUpon>UControlProjects.xaml</DependentUpon>
+    <Compile Include="View\UserController.xaml.cs">
+      <DependentUpon>UserController.xaml</DependentUpon>
     </Compile>
     <Page Include="View\UpdatePage.xaml">
       <SubType>Designer</SubType>
@@ -108,7 +108,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="View\UControlProjects.xaml">
+    <Page Include="View\UserController.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

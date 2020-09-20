@@ -16,9 +16,8 @@
                         <TextBlock Margin="3">Projects</TextBlock>
                     </StackPanel>
                 </TabItem.Header>
-                <local:UControlProjects x:Name="userControlProjects" Text="{Binding Projects}" ButtonText="{Binding MyButton}></local:UControlProjects>
-                
-                
+
+                <local:UserController></local:UserController>
             </TabItem>
             <TabItem x:Name="tabletsTab">
                 <TabItem.Header>
@@ -26,8 +25,7 @@
                         <TextBlock Margin="3">Objectives</TextBlock>
                     </StackPanel>
                 </TabItem.Header>
-
-                <local:UControlProjects></local:UControlProjects>
+                <local:UserController></local:UserController>
 
             </TabItem>
         </TabControl>
