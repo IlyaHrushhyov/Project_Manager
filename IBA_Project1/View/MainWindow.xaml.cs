@@ -15,7 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace IBA_Project1
+namespace IBA_Project1.View
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

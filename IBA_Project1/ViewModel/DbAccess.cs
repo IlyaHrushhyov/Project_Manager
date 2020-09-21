@@ -22,8 +22,6 @@ namespace IBA_Project1.ViewModel
             return projects;
         }
 
-       
-
         public List<Objective> GetObjectives()
         {
             Context context = new Context();
