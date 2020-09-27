@@ -14,11 +14,15 @@ namespace IBA_Project1.ViewModel
     class DbAccess
     {
         Context context = new Context();
-        public List<Project> GetProjects()
+        public async Task<List<Project>> GetProjectsAsync()
         {
             //Context context = new Context();
-            context.Projects.Load();
-            List<Project> projects = context.Projects.Local.ToList();
+            using (context)
+            {
+                await Task.Run(() => context.Projects.LoadAsync());
+            }
+            
+            var projects = await context.Projects.ToListAsync();
             return projects;
         }
 

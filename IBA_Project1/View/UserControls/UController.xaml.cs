@@ -1,4 +1,5 @@
-﻿using IBA_Project1.ViewModel;
+﻿using IBA_Project1.Repository;
+using IBA_Project1.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -23,10 +24,11 @@ namespace IBA_Project1.View.UserControls
     /// </summary>
     public partial class UController : UserControl
     {
+       /* IRepository<Project> context;*/
         public UController()
         {
             InitializeComponent();
-            this.DataContext = new VModel();
+            /*context = new SQLProjectRepository();*/
         }
 
         public string Text

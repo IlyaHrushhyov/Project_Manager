@@ -65,6 +65,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\Repository\IRepositoryInterface.cs" />
+    <Compile Include="Model\Repository\SQLProjectRepository.cs" />
     <Compile Include="ViewModel\DbAccess.cs" />
     <Compile Include="ViewModel\VModel.cs" />
     <Compile Include="View\UpdatePage.xaml.cs">

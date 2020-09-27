@@ -15,9 +15,8 @@ namespace IBA_Project1.ViewModel
     {
         public VModel()
         {
-            Context context = new Context();
-            context.Projects.Load();
-            Projects = new ObservableCollection<Project>(context.Projects.Local.ToList());
+            DbAccess dbAccess = new DbAccess();
+            Projects = new ObservableCollection<Project>(dbAccess.GetProjectsAsync().Result);
         }
         private ObservableCollection<Project> projects = new ObservableCollection<Project>();
        
