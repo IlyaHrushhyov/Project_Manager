@@ -24,11 +24,11 @@ namespace IBA_Project1.View.UserControls
     /// </summary>
     public partial class UController : UserControl
     {
-       /* IRepository<Project> context;*/
+       
         public UController()
         {
             InitializeComponent();
-            /*context = new SQLProjectRepository();*/
+            
         }
 
         public string Text

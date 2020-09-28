@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace IBA_Project1.Repository
 {
-   interface IRepository<T> : IDisposable
+   public interface IRepository<T> : IDisposable
         where T: class
     {
         IEnumerable<T> GetList();

@@ -7,25 +7,30 @@ using System.Threading.Tasks;
 
 namespace IBA_Project1.Repository
 {
-    class SQLProjectRepository: IRepository<Project>
+   /* public class SQLProjectRepository<T>: IRepository<T>
+        where T : class
     {
-        private Context context;
+        private readonly Context _context;
 
-        public SQLProjectRepository()
+        public SQLProjectRepository(Context context)
         {
-            this.context = new Context();
+            //this.context = new Context();
+            _context = context;
         }
 
-        public void Create(Project item)
+        public void Create(T item)
         {
-            context.Projects.Add(item);
+            _context.Projects.Add(item);
         }
 
         public void Delete(int id)
         {
-            Project project = context.Projects.Find(id);
-            if (project != null)
-                context.Projects.Remove(project);
+            var element = _context.Projects.Find(id);
+            if (element != null)
+                _context.Projects.Remove(element);
+            else
+                throw new InvalidOperationException("This entity wasnt in the database");
+          
         }
 
         private bool disposed = false;
@@ -36,7 +41,7 @@ namespace IBA_Project1.Repository
             {
                 if (disposing)
                 {
-                    context.Dispose();
+                    _context.Dispose();
                 }
             }
             this.disposed = true;
@@ -50,22 +55,22 @@ namespace IBA_Project1.Repository
 
         public Project GetElement(int id)
         {
-            return context.Projects.Find(id);
+            return _context.Projects.Find(id);
         }
 
         public IEnumerable<Project> GetList()
         {
-            return context.Projects;
+            return _context.Projects;
         }
 
         public void Save()
         {
-            context.SaveChanges();
+            _context.SaveChanges();
         }
 
         public void Update(Project item)
         {
-            context.Entry(item).State = EntityState.Modified;
+            _context.Entry(item).State = EntityState.Modified;
         }
-    }
+    }*/
 }

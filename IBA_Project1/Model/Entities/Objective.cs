@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace IBA_Project1.Model.Entities
 {
-    public class Objective
+    public class Objective:ModelBase
     {
         [Key]
         public int Id { get; set; }

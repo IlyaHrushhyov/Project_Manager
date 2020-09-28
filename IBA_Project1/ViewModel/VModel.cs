@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IBA_Project1.Repository;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -13,10 +14,15 @@ namespace IBA_Project1.ViewModel
 {
     public class VModel: INotifyPropertyChanged
     {
-        public VModel()
+        private readonly Context _context;
+        public VModel(Context context)
         {
-            DbAccess dbAccess = new DbAccess();
-            Projects = new ObservableCollection<Project>(dbAccess.GetProjectsAsync().Result);
+            // DbAccess dbAccess = new DbAccess();
+            //SQLProjectRepository projectRepository = new SQLProjectRepository();
+            //Projects = new ObservableCollection<Project>(dbAccess.GetProjectsAsync().Result);
+            //Projects = new ObservableCollection<Project>(projectRepository.GetList());
+            _context = context;
+
         }
         private ObservableCollection<Project> projects = new ObservableCollection<Project>();
        
