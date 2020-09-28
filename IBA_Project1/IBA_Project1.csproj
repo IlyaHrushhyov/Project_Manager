@@ -65,10 +65,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Migrations\202009282115109_IdMovedToInterface.cs" />
+    <Compile Include="Migrations\202009282115109_IdMovedToInterface.designer.cs">
+      <DependentUpon>202009282115109_IdMovedToInterface.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\Entities\IEntity.cs" />
     <Compile Include="Model\Entities\ModelBase.cs" />
-    <Compile Include="Model\Repository\IRepositoryInterface.cs" />
-    <Compile Include="Model\Repository\SQLProjectRepository.cs" />
+    <Compile Include="Model\Repository\IRepository.cs" />
+    <Compile Include="Model\Repository\SQLRepository.cs" />
     <Compile Include="ViewModel\DbAccess.cs" />
     <Compile Include="ViewModel\VModel.cs" />
     <Compile Include="View\UpdatePage.xaml.cs">
@@ -143,6 +147,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202009111947211_RenameProperty.resx">
       <DependentUpon>202009111947211_RenameProperty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009282115109_IdMovedToInterface.resx">
+      <DependentUpon>202009282115109_IdMovedToInterface.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

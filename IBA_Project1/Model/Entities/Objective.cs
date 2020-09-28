@@ -10,8 +10,8 @@ namespace IBA_Project1.Model.Entities
 {
     public class Objective:ModelBase
     {
-        [Key]
-        public int Id { get; set; }
+       /* [Key]
+        public int Id { get; set; }*/
 
         [ForeignKey("Project")]
         public int ProjectId { get; set; }
