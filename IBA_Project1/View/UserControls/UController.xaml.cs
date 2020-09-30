@@ -17,6 +17,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Interactivity;
 
 namespace IBA_Project1.View.UserControls
 {
@@ -41,6 +42,10 @@ namespace IBA_Project1.View.UserControls
         public static readonly DependencyProperty TextProperty =
             DependencyProperty.Register("Text", typeof(string), typeof(UController), new PropertyMetadata(null));
 
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
 

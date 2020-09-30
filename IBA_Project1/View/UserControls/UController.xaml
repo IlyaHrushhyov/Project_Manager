@@ -3,10 +3,28 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:IBA_Project1.View.UserControls"
+             xmlns:viewmodels ="clr-namespace:IBA_Project1.ViewModel"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-             
+             d:DesignHeight="450" d:DesignWidth="800"
+             Loaded="UserControl_Loaded">
+
+    <UserControl.DataContext>
+        <viewmodels:VModel/>
+    </UserControl.DataContext>
+    
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding GetDataCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    
+    
+    
+   
+
+    
+    
     <Grid>
         <Grid>
             <ListView Name="list" HorizontalAlignment="Left" SelectionMode="Extended" 
