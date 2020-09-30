@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Data.Entity;
+using System.Diagnostics;
 using System.Dynamic;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -15,16 +16,15 @@ namespace IBA_Project1.ViewModel
 {
     public class VModel: INotifyPropertyChanged
     {
-        //private readonly Context _context;
-        public VModel(Context context)
+        private readonly IRepository<Project> _projectRepository;
+
+        // projectRepository - dependency
+        public VModel(IRepository<Project> projectRepository)
         {
-            
-            //_context = context;
 
+            _projectRepository = projectRepository;
+            GetData();
         }
-        //private ObservableCollection<Project> projects = new ObservableCollection<Project>();
-
-        //public ObservableCollection<Project> Projects { get; set; }
 
         private Project project;
         public Project Project
@@ -36,7 +36,20 @@ namespace IBA_Project1.ViewModel
                 OnPropertyChanged();
             }
         }
-        
+        public ObservableCollection<Project> Projects { get; set; }
+        protected void RegisterCollections()
+        {
+            Projects = new ObservableCollection<Project>();
+        }
+        private void GetData()
+        {
+            var projects = _projectRepository.Get().ToList();
+            Projects = new ObservableCollection<Project>(projects);
+        }
+        private void Save()
+        {
+            _projectRepository.Save(Project);
+        }
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)

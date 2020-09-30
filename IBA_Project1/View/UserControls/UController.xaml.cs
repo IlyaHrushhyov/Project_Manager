@@ -3,6 +3,7 @@ using IBA_Project1.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
@@ -28,9 +29,9 @@ namespace IBA_Project1.View.UserControls
         public UController()
         {
             InitializeComponent();
-            
+            //DataContext = new VModel();
         }
-
+        
         public string Text
         {
             get { return (string)GetValue(TextProperty); }
