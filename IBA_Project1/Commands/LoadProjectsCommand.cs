@@ -25,10 +25,10 @@ namespace IBA_Project1.Command
             return true;
         }
 
-        public async void Execute(object parameter)
+        public void Execute(object parameter)
         {
             // Get todo list items from API.
-            
+            _vModel.GetData();
         }
     }
 }

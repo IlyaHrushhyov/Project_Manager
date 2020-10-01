@@ -9,22 +9,6 @@
              d:DesignHeight="450" d:DesignWidth="800"
              Loaded="UserControl_Loaded">
 
-    <UserControl.DataContext>
-        <viewmodels:VModel/>
-    </UserControl.DataContext>
-    
-    <i:Interaction.Triggers>
-        <i:EventTrigger EventName="Loaded">
-            <i:InvokeCommandAction Command="{Binding GetDataCommand}"/>
-        </i:EventTrigger>
-    </i:Interaction.Triggers>
-    
-    
-    
-   
-
-    
-    
     <Grid>
         <Grid>
             <ListView Name="list" HorizontalAlignment="Left" SelectionMode="Extended" 

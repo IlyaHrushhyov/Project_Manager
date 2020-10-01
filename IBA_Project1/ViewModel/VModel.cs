@@ -13,19 +13,20 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 
 namespace IBA_Project1.ViewModel
 {
     public class VModel: INotifyPropertyChanged
     {
         private readonly IRepository<Project> _projectRepository;
-        private readonly IRepository<Objective> _objectiveRepository;
+       
 
         public VModel()
         {
-            
             _projectRepository = new SQLRepository<Project>(new Context());
-            
+            LoadProjectsCommand = new LoadProjectsCommand(this);
+            //LoadProjectsCommand.Execute(null);
             //GetData();
         }
 
@@ -49,7 +50,7 @@ namespace IBA_Project1.ViewModel
         }
         public ObservableCollection<Project> Projects { get; set; }
 
-        private RelayCommand getDataCommand;
+       /* private RelayCommand getDataCommand;
         public RelayCommand GetDataCommand
         {
             get
@@ -60,14 +61,9 @@ namespace IBA_Project1.ViewModel
                       GetData();
                   }));
             }
-        }
-        private void UserControl_Loaded(object sender, System.Windows.RoutedEventArgs e)
-        {
-            if(GetDataCommand != null)
-            {
-                GetDataCommand.Execute(null);
-            }
-        }
+        }*/
+        public ICommand LoadProjectsCommand { get; set; }
+       
         protected void RegisterCollections()
         {
             Projects = new ObservableCollection<Project>();

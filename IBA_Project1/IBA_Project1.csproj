@@ -82,6 +82,7 @@
     <Compile Include="Model\Repository\IRepository.cs" />
     <Compile Include="Model\Repository\SQLRepository.cs" />
     <Compile Include="ViewModel\DbAccess.cs" />
+    <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\VModel.cs" />
     <Compile Include="View\UpdatePage.xaml.cs">
       <DependentUpon>UpdatePage.xaml</DependentUpon>

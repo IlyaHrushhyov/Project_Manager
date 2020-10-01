@@ -30,20 +30,40 @@ namespace IBA_Project1.View.UserControls
         public UController()
         {
             InitializeComponent();
-            //DataContext = new VModel();
+            
         }
         
-        public string Text
+       /* public string Text
         {
             get { return (string)GetValue(TextProperty); }
             set { SetValue(TextProperty, value); }
         }
 
         public static readonly DependencyProperty TextProperty =
-            DependencyProperty.Register("Text", typeof(string), typeof(UController), new PropertyMetadata(null));
+            DependencyProperty.Register("Text", typeof(string), typeof(UController), new PropertyMetadata(null));*/
 
-        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        public ICommand LoadCommand
         {
+            get
+            {
+                return (ICommand)GetValue(LoadCommandProperty);
+            }
+            set
+            {
+                SetValue(LoadCommandProperty, value);
+            }
+        }
+
+        public static readonly DependencyProperty LoadCommandProperty =
+            DependencyProperty.Register("LoadCommand", typeof(ICommand), typeof(UController), new PropertyMetadata(null));
+
+        private void UserControl_Loaded(object sender, System.Windows.RoutedEventArgs e)
+        {
+            if (LoadCommand != null)
+            {
+                LoadCommand.Execute(null);
+            }
+               
 
         }
     }

@@ -25,7 +25,7 @@ namespace IBA_Project1.View
         public MainWindow()
         {
             InitializeComponent();
-            
+            DataContext = new MainViewModel();
         }
     }
 }
