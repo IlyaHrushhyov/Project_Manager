@@ -72,7 +72,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Commands\LoadProjectsCommand.cs" />
-    <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Migrations\202009282115109_IdMovedToInterface.cs" />
     <Compile Include="Migrations\202009282115109_IdMovedToInterface.designer.cs">
       <DependentUpon>202009282115109_IdMovedToInterface.cs</DependentUpon>
@@ -81,9 +80,10 @@
     <Compile Include="Model\Entities\ModelBase.cs" />
     <Compile Include="Model\Repository\IRepository.cs" />
     <Compile Include="Model\Repository\SQLRepository.cs" />
-    <Compile Include="ViewModel\DbAccess.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
-    <Compile Include="ViewModel\VModel.cs" />
+    <Compile Include="ViewModel\BaseViewModel.cs" />
+    <Compile Include="ViewModel\ObjectiveViewModel.cs" />
+    <Compile Include="ViewModel\ProjectViewModel.cs" />
     <Compile Include="View\UpdatePage.xaml.cs">
       <DependentUpon>UpdatePage.xaml</DependentUpon>
     </Compile>

@@ -16,43 +16,44 @@ namespace IBA_Project1.Repository
 
         public SQLRepository(Context context)
         {
-            //this.context = new Context();
+            
             _context = context;
         }
 
-        public IQueryable<T> Get()
+        public async Task<IQueryable<T>> Get()
         {
-            return _context.Set<T>();
+            return await Task.FromResult(_context.Set<T>());
         }
 
-        public T Get(int id)
+        public async Task<T> Get(int id)
         {
-            return Get().FirstOrDefault(x => x.Id == id);
+            return await Task.FromResult(Get().Result.FirstOrDefault(x => x.Id == id));
         }
         
-        public T Save(T element)
+        // Here i have some problems with full async implementing
+        public async Task <T> Save(T element)
         {
             if (element.Id == 0)
-                return SaveNew(element);
+                return SaveNew(element).Result;
 
             var entityElement = Get(element.Id);
             _context.Entry(entityElement).CurrentValues.SetValues(element);
             _context.SaveChanges();
             return element;
         }
-        public T SaveNew(T element)
+        public async Task<T> SaveNew(T element)
         {
-            _context.Set<T>().Add(element);
+            await Task.FromResult(_context.Set<T>().Add(element));
             _context.SaveChanges();
             return element;
         }
-        public void Delete(int id)
+        public async Task Delete(int id)
         {
-            var element = Get(id);
+            var element = Get(id).Result;
             if (element == null)
                 throw new InvalidOperationException("This entity wasnt in the database");
 
-            _context.Set<T>().Remove(element);
+            await Task.FromResult(_context.Set<T>().Remove(element));
             _context.SaveChanges();
         }
 

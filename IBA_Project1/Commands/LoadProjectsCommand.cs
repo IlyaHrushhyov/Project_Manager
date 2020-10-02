@@ -13,9 +13,9 @@ namespace IBA_Project1.Command
     {
         public event EventHandler CanExecuteChanged;
 
-        private readonly VModel _vModel;
+        private readonly ProjectViewModel _vModel;
         
-        public LoadProjectsCommand(VModel vModel)
+        public LoadProjectsCommand(ProjectViewModel vModel)
         {
             _vModel = vModel;
         }

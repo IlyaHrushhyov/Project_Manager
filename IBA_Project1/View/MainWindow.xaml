@@ -8,10 +8,28 @@
         mc:Ignorable="d" FontFamily="Segoe UI Light"
         Title="Project manager" Height="450" Width="800">
     <Grid>
+        <TabControl x:Name="Manager">
+            <TabItem x:Name="projectsTab">
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Margin="3">Projects</TextBlock>
+                    </StackPanel>
+                </TabItem.Header>
 
-
-
-        <views:UController DataContext="{Binding VModel}"
+                <views:UController DataContext="{Binding VModel}"
                                    LoadCommand="{Binding LoadProjectsCommand}"/>
+
+            </TabItem>
+            <TabItem x:Name="tabletsTab">
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Margin="3">Objectives</TextBlock>
+                    </StackPanel>
+                </TabItem.Header>
+
+                <views:UController/>
+
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>

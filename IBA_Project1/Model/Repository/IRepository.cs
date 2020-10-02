@@ -10,10 +10,10 @@ namespace IBA_Project1.Repository
    public interface IRepository<T>
         where T: class, IEntity, new()
     {
-        IQueryable<T> Get();
-        T Get(int id);
+        Task<IQueryable<T>> Get();
+        Task<T> Get(int id);
       
-        void Delete(int id);
-        T Save(T entity);
+        Task Delete(int id);
+        Task<T> Save(T entity);
     }
 }

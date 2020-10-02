@@ -17,27 +17,19 @@ using System.Windows.Input;
 
 namespace IBA_Project1.ViewModel
 {
-    public class VModel: INotifyPropertyChanged
+    public class ProjectViewModel: BaseViewModel
     {
         private readonly IRepository<Project> _projectRepository;
        
 
-        public VModel()
+        public ProjectViewModel()
         {
             _projectRepository = new SQLRepository<Project>(new Context());
             LoadProjectsCommand = new LoadProjectsCommand(this);
-            //LoadProjectsCommand.Execute(null);
-            //GetData();
+           
         }
 
-        // projectRepository - dependency
-       /* public VModel(IRepository<Project> projectRepository)
-        {
-
-            _projectRepository = projectRepository;
-            GetData();
-        }*/
-
+       
         private Project project;
         public Project Project
         {
@@ -45,23 +37,23 @@ namespace IBA_Project1.ViewModel
             set
             {
                 project = value;
-                OnPropertyChanged();
+                OnPropertyChanged(nameof(Project));
             }
         }
-        public ObservableCollection<Project> Projects { get; set; }
-
-       /* private RelayCommand getDataCommand;
-        public RelayCommand GetDataCommand
+        private ObservableCollection<Project> projects;
+        public ObservableCollection<Project> Projects
         {
             get
             {
-                return getDataCommand ??
-                  (getDataCommand = new RelayCommand(obj =>
-                  {
-                      GetData();
-                  }));
+                return projects;
             }
-        }*/
+            set
+            {
+                projects = value;
+                OnPropertyChanged(nameof(Projects));
+            }
+        }
+
         public ICommand LoadProjectsCommand { get; set; }
        
         protected void RegisterCollections()
@@ -70,18 +62,18 @@ namespace IBA_Project1.ViewModel
         }
         public void GetData()
         {
-            var projects = _projectRepository.Get().ToList();
+            var projects = _projectRepository.Get().Result.ToList();
             Projects = new ObservableCollection<Project>(projects);
         }
         private void Save()
         {
             _projectRepository.Save(Project);
         }
-        public event PropertyChangedEventHandler PropertyChanged;
+      /*  public event PropertyChangedEventHandler PropertyChanged;
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+        }*/
     }
 }
