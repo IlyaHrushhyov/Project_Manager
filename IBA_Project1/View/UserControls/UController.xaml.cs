@@ -32,15 +32,15 @@ namespace IBA_Project1.View.UserControls
             InitializeComponent();
             
         }
-        
-       /* public string Text
+
+        public string TextBoxBinding
         {
-            get { return (string)GetValue(TextProperty); }
-            set { SetValue(TextProperty, value); }
+            get { return (string)GetValue(TextBoxBindingProperty); }
+            set { SetValue(TextBoxBindingProperty, value); }
         }
 
-        public static readonly DependencyProperty TextProperty =
-            DependencyProperty.Register("Text", typeof(string), typeof(UController), new PropertyMetadata(null));*/
+        public static readonly DependencyProperty TextBoxBindingProperty =
+            DependencyProperty.Register("TextBoxBinding", typeof(string), typeof(UController), new PropertyMetadata(null));
 
         public ICommand LoadCommand
         {
@@ -66,6 +66,57 @@ namespace IBA_Project1.View.UserControls
                
 
         }
+
+        public ICommand SelectedChangedCommand
+        {
+            get
+            {
+                return (ICommand)GetValue(SelectedChangedCommandProperty);
+            }
+            set
+            {
+                SetValue(SelectedChangedCommandProperty, value);
+            }
+
+        }
+
+        public static readonly DependencyProperty SelectedChangedCommandProperty =
+            DependencyProperty.Register("SelectedChangedCommand", typeof(ICommand), typeof(UController), new PropertyMetadata(null));
+
+        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (SelectedChangedCommand != null)
+            {
+                SelectedChangedCommand.Execute(ListView.SelectedItem);
+            }
+        }
+
+        public ICommand EditCommand
+        {
+            get
+            {
+                return (ICommand)GetValue(EditCommandProperty);
+            }
+            set
+            {
+                SetValue(EditCommandProperty, value);
+            }
+        }
+        public static readonly DependencyProperty EditCommandProperty =
+            DependencyProperty.Register("EditCommand", typeof(ICommand), typeof(UController), new PropertyMetadata(null));
+        private void UpdateButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (EditCommand != null)
+            {
+                EditCommand.Execute(TextBox.Text);
+            }
+        }
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+           
+        }
+
+        
     }
 }
 

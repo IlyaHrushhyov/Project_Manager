@@ -30,6 +30,7 @@ namespace IBA_Project1.Repository
             return await Task.FromResult(Get().Result.FirstOrDefault(x => x.Id == id));
         }
         
+        // Update element
         // Here i have some problems with full async implementing
         public async Task <T> Save(T element)
         {
@@ -40,6 +41,13 @@ namespace IBA_Project1.Repository
             _context.Entry(entityElement).CurrentValues.SetValues(element);
             _context.SaveChanges();
             return element;
+        }
+        public async Task Update(T element)
+        {
+            var entityElement = Get(element.Id);
+            _context.Entry(entityElement).CurrentValues.SetValues(element);
+
+            _context.SaveChanges();
         }
         public async Task<T> SaveNew(T element)
         {

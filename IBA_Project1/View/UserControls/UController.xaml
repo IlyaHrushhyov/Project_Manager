@@ -7,13 +7,21 @@
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
-             Loaded="UserControl_Loaded">
+             Loaded="UserControl_Loaded"
+             x:Name="UControl">
 
     <Grid>
-        <Grid>
-            <ListView Name="list" HorizontalAlignment="Left" SelectionMode="Extended" 
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="450"></ColumnDefinition>
+            <ColumnDefinition Width="350"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        
+            <ListView x:Name="ListView" Grid.Column="0" HorizontalAlignment="Left" 
       Width="450" Height="450" Background="HoneyDew"
-      IsSynchronizedWithCurrentItem="true" ItemsSource="{Binding Projects}">
+      IsSynchronizedWithCurrentItem="true" ItemsSource="{Binding Projects}" SelectionMode="Single" SelectionChanged="ListView_SelectionChanged">
+                
+                
+                
                 <ListView.View>
                     <GridView>
                         <GridView.Columns>
@@ -30,6 +38,31 @@
                     </ContextMenu>
                 </ListView.ContextMenu>
             </ListView>
+        
+        <Grid Grid.Column="1" Background="AliceBlue">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="175"></ColumnDefinition>
+                <ColumnDefinition Width="175"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Margin="1" BorderThickness="2"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+
+            <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Content="Adding" HorizontalAlignment="Center"></Label>
+            <Label Grid.Row="1" Grid.Column="0" Content="Name"></Label>
+            <TextBox Grid.Row="2" Grid.ColumnSpan="2" Name ="TextBox" Text="{Binding TextBoxBinding, ElementName=UControl}"></TextBox>
+            <Button Grid.Row="3" Grid.Column ="0" Content="Add" Name="AddButton" Click="AddButton_Click"></Button>
+            <Button Grid.Row="3" Grid.Column ="2" Content="Update" Name="UpdateButton" Click="UpdateButton_Click"></Button>
+
+           
         </Grid>
+
     </Grid>
 </UserControl>

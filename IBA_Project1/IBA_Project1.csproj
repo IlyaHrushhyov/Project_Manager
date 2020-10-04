@@ -71,7 +71,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commands\EditProjectCommand.cs" />
     <Compile Include="Commands\LoadProjectsCommand.cs" />
+    <Compile Include="Commands\ProjectSelectionChangedCommand.cs" />
     <Compile Include="Migrations\202009282115109_IdMovedToInterface.cs" />
     <Compile Include="Migrations\202009282115109_IdMovedToInterface.designer.cs">
       <DependentUpon>202009282115109_IdMovedToInterface.cs</DependentUpon>
