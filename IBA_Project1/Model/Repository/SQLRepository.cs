@@ -20,11 +20,13 @@ namespace IBA_Project1.Repository
             _context = context;
         }
 
+        // used to get all entities
         public async Task<IQueryable<T>> Get()
         {
             return await Task.FromResult(_context.Set<T>());
         }
 
+        // used to get only one entity by id
         public async Task<T> Get(int id)
         {
             return await Task.FromResult(Get().Result.FirstOrDefault(x => x.Id == id));
@@ -32,29 +34,41 @@ namespace IBA_Project1.Repository
         
         // Update element
         // Here i have some problems with full async implementing
-        public async Task <T> Save(T element)
+        public async Task <T> SaveNew(T element)
         {
-            if (element.Id == 0)
+            /*if (element.Id == 0)
                 return SaveNew(element).Result;
 
             var entityElement = Get(element.Id);
             _context.Entry(entityElement).CurrentValues.SetValues(element);
             _context.SaveChanges();
+            return element;*/
+
+            if(element == null)
+            {
+                throw new ArgumentNullException("element");
+            }
+            _context.Set<T>().Add(element);
+            _context.SaveChanges();
             return element;
         }
         public async Task Update(T element)
         {
-            var entityElement = Get(element.Id);
-            _context.Entry(entityElement).CurrentValues.SetValues(element);
+            /* var entityElement = Get(element.Id);
+             _context.Entry(entityElement).CurrentValues.SetValues(element);
 
+             _context.SaveChanges();*/
+
+            var tempElement = _context.Set<T>().Find(element.Id);
+            _context.Entry(tempElement).CurrentValues.SetValues(element);
             _context.SaveChanges();
         }
-        public async Task<T> SaveNew(T element)
+       /* public async Task<T> SaveNew(T element)
         {
             await Task.FromResult(_context.Set<T>().Add(element));
             _context.SaveChanges();
             return element;
-        }
+        }*/
         public async Task Delete(int id)
         {
             var element = Get(id).Result;

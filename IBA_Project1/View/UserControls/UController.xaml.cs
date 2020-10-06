@@ -109,11 +109,29 @@ namespace IBA_Project1.View.UserControls
             if (EditCommand != null)
             {
                 EditCommand.Execute(TextBox.Text);
+                
+
             }
         }
+        public ICommand AddCommand
+        {
+            get
+            {
+                return (ICommand)GetValue(AddCommandProperty);
+            }
+            set
+            {
+                SetValue(AddCommandProperty, value);
+            }
+        }
+        public static readonly DependencyProperty AddCommandProperty =
+            DependencyProperty.Register("AddCommand", typeof(ICommand), typeof(UController), new PropertyMetadata(null));
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-           
+            if (AddCommand != null)
+            {
+                AddCommand.Execute(TextBox.Text);
+            }
         }
 
         

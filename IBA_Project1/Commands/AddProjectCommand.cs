@@ -8,32 +8,23 @@ using System.Windows.Input;
 
 namespace IBA_Project1.Commands
 {
-    public class EditProjectCommand : ICommand
+    public class AddProjectCommand : ICommand
     {
         public event EventHandler CanExecuteChanged;
         private readonly ProjectViewModel _vModel;
-        public EditProjectCommand(ProjectViewModel projectViewModel)
+        public AddProjectCommand(ProjectViewModel viewModel)
         {
-            _vModel = projectViewModel;
+            _vModel = viewModel;
         }
         public bool CanExecute(object parameter)
         {
-            return true;
+            throw new NotImplementedException();
         }
-
-       /* public void Execute(object newName, object currentProject)
-        {
-            var project = (Project)currentProject;
-            var name = (string)newName;
-            _vModel.Project.Id = project.Id;
-            _vModel.Project.Name = name;
-            _vModel.Update();
-        }*/
 
         public void Execute(object parameter)
         {
             var newName = (string)parameter;
-            _vModel.Update(newName);
+            _vModel.SaveNew(newName);
             _vModel.GetData();
         }
     }

@@ -58,10 +58,10 @@ namespace IBA_Project1.ViewModel
             var projects = _objectiveRepository.Get().Result.ToList();
             Objectives = new ObservableCollection<Objective>(objectives);
         }
-        private void Save()
+       /* private void Save()
         {
             _objectiveRepository.Save(Objective);
-        }
+        }*/
 
     }
 }

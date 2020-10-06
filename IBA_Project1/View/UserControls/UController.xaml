@@ -55,9 +55,9 @@
             <Border Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Margin="1" BorderThickness="2"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
 
 
-            <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Content="Adding" HorizontalAlignment="Center"></Label>
+            <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Content="Change" HorizontalAlignment="Center"></Label>
             <Label Grid.Row="1" Grid.Column="0" Content="Name"></Label>
-            <TextBox Grid.Row="2" Grid.ColumnSpan="2" Name ="TextBox" Text="{Binding TextBoxBinding, ElementName=UControl}"></TextBox>
+            <TextBox Grid.Row="2" Grid.ColumnSpan="2" Name ="TextBox" Text="{Binding Path=TextBoxBinding, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, ElementName=UControl}"></TextBox>
             <Button Grid.Row="3" Grid.Column ="0" Content="Add" Name="AddButton" Click="AddButton_Click"></Button>
             <Button Grid.Row="3" Grid.Column ="2" Content="Update" Name="UpdateButton" Click="UpdateButton_Click"></Button>
 

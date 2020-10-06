@@ -29,6 +29,8 @@ namespace IBA_Project1.ViewModel
             LoadProjectsCommand = new LoadProjectsCommand(this);
             SelectionProjectChangedCommand = new ProjectSelectionChangedCommand(this);
             UpdateCommand = new EditProjectCommand(this);
+            AddProjectCommand = new AddProjectCommand(this);
+            //Project = new Project();
         }
 
        
@@ -55,16 +57,47 @@ namespace IBA_Project1.ViewModel
                 OnPropertyChanged(nameof(Projects));
             }
         }
-
+        private string projectName;
+        public string ProjectName
+        {
+            get => projectName;
+            set
+            {
+                projectName = value;
+                OnPropertyChanged(nameof(ProjectName));
+            }
+        }
         public ICommand LoadProjectsCommand { get; set; }
         public ICommand AddProjectCommand { get; set; }
         public ICommand SelectionProjectChangedCommand { get; set; }
         public ICommand UpdateCommand { get; set; }
         
+        public void SaveNew(string newName)
+        {
+            var boolFlag = Projects.Any(p => p.Name.Equals(newName));
+            if (boolFlag == false)
+            {
+                Project.Name = newName;
+                _projectRepository.SaveNew(Project);
+            }
+            else
+            {
+                MessageBox.Show("Such project already exists");
+            }
+
+        }
         public void Update(string newName)
         {
-            Project.Name = newName;
-            _projectRepository.Update(Project);
+            var boolFlag = Projects.Any(p => p.Name.Equals(newName));
+            if(boolFlag == false)
+            {
+                Project.Name = newName;
+                _projectRepository.Update(Project);
+            }
+            else
+            {
+                MessageBox.Show("Such project already exists");
+            }
         }
         // is used for loading all projects
         public void GetData()
@@ -79,10 +112,10 @@ namespace IBA_Project1.ViewModel
             Project = (Project) project;
         }
         // is used for update element
-        public void Save()
+       /* public void Save()
         {
             _projectRepository.Save(Project);
-        }
+        }*/
       /*  public event PropertyChangedEventHandler PropertyChanged;
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)

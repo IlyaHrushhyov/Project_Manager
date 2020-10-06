@@ -19,8 +19,9 @@
                 <views:UController DataContext="{Binding VModel}"
                                    LoadCommand="{Binding LoadProjectsCommand}"
                                    SelectedChangedCommand="{Binding SelectionProjectChangedCommand}"
-                                   TextBoxBinding="{Binding Project.Name}"
-                                   EditCommand="{Binding UpdateCommand}"/>
+                                   TextBoxBinding="{Binding ProjectName}"
+                                   EditCommand="{Binding UpdateCommand}"
+                                   AddCommand="{Binding AddProjectCommand}"/>
 
             </TabItem>
             <TabItem x:Name="tabletsTab">

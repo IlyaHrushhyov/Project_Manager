@@ -14,7 +14,7 @@ namespace IBA_Project1.Repository
         Task<T> Get(int id);
       
         Task Delete(int id);
-        Task<T> Save(T entity);
+        Task<T> SaveNew(T entity);
         Task Update(T project);
     }
 }

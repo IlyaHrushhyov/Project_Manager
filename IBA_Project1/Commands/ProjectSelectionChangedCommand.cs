@@ -21,8 +21,18 @@ namespace IBA_Project1.Commands
         public void Execute(object parameter)
         {
             // Get todo list items from API.
+            /*var project = (Project)parameter;
+           _projectVModel.Get(project);*/         //// first variation work before update
+
+            /* var project = (Project)parameter;
+             _projectVModel.Project.Name = project.Name; */// second variation doesn't work at all
+
+            /*var project = (Project)parameter;
+            _projectVModel.ProjectName = project.Name;*/
+
             var project = (Project)parameter;
-            _projectVModel.Get(project);
+            _projectVModel.Project = project;
+            _projectVModel.ProjectName = project.Name;
         }
     }
 }

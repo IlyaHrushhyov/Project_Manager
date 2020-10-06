@@ -71,6 +71,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commands\AddProjectCommand.cs" />
     <Compile Include="Commands\EditProjectCommand.cs" />
     <Compile Include="Commands\LoadProjectsCommand.cs" />
     <Compile Include="Commands\ProjectSelectionChangedCommand.cs" />
