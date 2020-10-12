@@ -1,10 +1,5 @@
-﻿using IBA_Project1.Repository;
-using IBA_Project1.ViewModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,32 +12,29 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Windows.Interactivity;
 
 namespace IBA_Project1.View.UserControls
 {
     /// <summary>
-    /// Логика взаимодействия для UserController.xaml
+    /// Логика взаимодействия для UControl2.xaml
     /// </summary>
-    public partial class UController : UserControl
+    public partial class UControl2 : UserControl
     {
-
-        public UController()
+        public UControl2()
         {
             InitializeComponent();
-
         }
 
-        public string TextBoxBinding
+        public string TextBoxBindingUC2
         {
             get { return (string)GetValue(TextBoxBindingProperty); }
             set { SetValue(TextBoxBindingProperty, value); }
         }
 
         public static readonly DependencyProperty TextBoxBindingProperty =
-            DependencyProperty.Register("TextBoxBinding", typeof(string), typeof(UController), new PropertyMetadata(null));
+            DependencyProperty.Register("TextBoxBindingUC2", typeof(string), typeof(UControl2), new PropertyMetadata(null));
 
-        public ICommand LoadCommand
+        public ICommand LoadCommandUC2
         {
             get
             {
@@ -55,18 +47,20 @@ namespace IBA_Project1.View.UserControls
         }
 
         public static readonly DependencyProperty LoadCommandProperty =
-            DependencyProperty.Register("LoadCommand", typeof(ICommand), typeof(UController), new PropertyMetadata(null));
+            DependencyProperty.Register("LoadCommandUC2", typeof(ICommand), typeof(UControl2), new PropertyMetadata(null));
 
         private void UserControl_Loaded(object sender, System.Windows.RoutedEventArgs e)
         {
-            if (LoadCommand != null)
+            if (LoadCommandUC2 != null)
             {
-                LoadCommand.Execute(null);
-
+                LoadCommandUC2.Execute(null);
+              
             }
+
+
         }
 
-        public ICommand SelectedChangedCommand
+        public ICommand SelectedChangedCommandUC2
         {
             get
             {
@@ -80,17 +74,17 @@ namespace IBA_Project1.View.UserControls
         }
 
         public static readonly DependencyProperty SelectedChangedCommandProperty =
-            DependencyProperty.Register("SelectedChangedCommand", typeof(ICommand), typeof(UController), new PropertyMetadata(null));
+            DependencyProperty.Register("SelectedChangedCommandUC2", typeof(ICommand), typeof(UControl2), new PropertyMetadata(null));
 
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (SelectedChangedCommand != null)
+            if (SelectedChangedCommandUC2 != null)
             {
-                SelectedChangedCommand.Execute(ListView.SelectedItem);
+                SelectedChangedCommandUC2.Execute(ListView.SelectedItem);
             }
         }
 
-        public ICommand EditCommand
+        public ICommand EditCommandUC2
         {
             get
             {
@@ -102,17 +96,17 @@ namespace IBA_Project1.View.UserControls
             }
         }
         public static readonly DependencyProperty EditCommandProperty =
-            DependencyProperty.Register("EditCommand", typeof(ICommand), typeof(UController), new PropertyMetadata(null));
+            DependencyProperty.Register("EditCommandUC2", typeof(ICommand), typeof(UControl2), new PropertyMetadata(null));
         private void UpdateButton_Click(object sender, RoutedEventArgs e)
         {
-            if (EditCommand != null)
+            if (EditCommandUC2 != null)
             {
-                EditCommand.Execute(TextBox.Text);
+                EditCommandUC2.Execute(TextBox.Text);
 
 
             }
         }
-        public ICommand AddCommand
+        public ICommand AddCommandUC2
         {
             get
             {
@@ -124,16 +118,17 @@ namespace IBA_Project1.View.UserControls
             }
         }
         public static readonly DependencyProperty AddCommandProperty =
-            DependencyProperty.Register("AddCommand", typeof(ICommand), typeof(UController), new PropertyMetadata(null));
+            DependencyProperty.Register("AddCommandUC2", typeof(ICommand), typeof(UControl2), new PropertyMetadata(null));
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            if (AddCommand != null)
+            if (AddCommandUC2 != null)
             {
-                AddCommand.Execute(TextBox.Text);
+                AddCommandUC2.Execute(TextBox.Text);
             }
         }
 
-        public ICommand DeleteCommand
+
+        public ICommand DeleteCommandUC2
         {
             get
             {
@@ -144,16 +139,15 @@ namespace IBA_Project1.View.UserControls
                 SetValue(DeleteCommandProperty, value);
             }
         }
-
         public static readonly DependencyProperty DeleteCommandProperty =
-           DependencyProperty.Register("DeleteCommand", typeof(ICommand), typeof(UController), new PropertyMetadata(null));
+            DependencyProperty.Register("DeleteCommandUC2", typeof(ICommand), typeof(UControl2), new PropertyMetadata(null));
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            if (DeleteCommand != null)
+            if (DeleteCommandUC2 != null)
             {
-                DeleteCommand.Execute(ListView.SelectedItem);
+                DeleteCommandUC2.Execute(ListView.SelectedItem);
             }
         }
+
     }
 }
-

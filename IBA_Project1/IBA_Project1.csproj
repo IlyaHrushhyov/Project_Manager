@@ -71,10 +71,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Commands\AddProjectCommand.cs" />
-    <Compile Include="Commands\EditProjectCommand.cs" />
-    <Compile Include="Commands\LoadProjectsCommand.cs" />
-    <Compile Include="Commands\ProjectSelectionChangedCommand.cs" />
+    <Compile Include="Commands\Objectives\AddObjectiveCommand.cs" />
+    <Compile Include="Commands\Objectives\DeleteObjective.cs" />
+    <Compile Include="Commands\Objectives\EditObjectiveCommand.cs" />
+    <Compile Include="Commands\Objectives\LoadObjectivesCommand.cs" />
+    <Compile Include="Commands\Objectives\ObjectiveSelectionChanged.cs" />
+    <Compile Include="Commands\Projects\AddProjectCommand.cs" />
+    <Compile Include="Commands\Projects\DeleteProjectCommand.cs" />
+    <Compile Include="Commands\Projects\EditProjectCommand.cs" />
+    <Compile Include="Commands\Projects\LoadProjectsCommand.cs" />
+    <Compile Include="Commands\Projects\ProjectSelectionChangedCommand.cs" />
     <Compile Include="Migrations\202009282115109_IdMovedToInterface.cs" />
     <Compile Include="Migrations\202009282115109_IdMovedToInterface.designer.cs">
       <DependentUpon>202009282115109_IdMovedToInterface.cs</DependentUpon>
@@ -82,21 +88,19 @@
     <Compile Include="Model\Entities\IEntity.cs" />
     <Compile Include="Model\Entities\ModelBase.cs" />
     <Compile Include="Model\Repository\IRepository.cs" />
-    <Compile Include="Model\Repository\SQLRepository.cs" />
+    <Compile Include="Model\Repository\ObjectiveRepository.cs" />
+    <Compile Include="Model\Repository\ProjectRepository.cs" />
+    <Compile Include="Model\UnitOfWork\UnitOfWork.cs" />
+    <Compile Include="ViewModel\IViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
-    <Compile Include="ViewModel\ObjectiveViewModel.cs" />
-    <Compile Include="ViewModel\ProjectViewModel.cs" />
-    <Compile Include="View\UpdatePage.xaml.cs">
-      <DependentUpon>UpdatePage.xaml</DependentUpon>
+    <Compile Include="ViewModel\VModel.cs" />
+    <Compile Include="View\UserControls\UControl2.xaml.cs">
+      <DependentUpon>UControl2.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\UserControls\UController.xaml.cs">
       <DependentUpon>UController.xaml</DependentUpon>
     </Compile>
-    <Page Include="View\UpdatePage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -128,6 +132,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\UserControls\UControl2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\UserControls\UController.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

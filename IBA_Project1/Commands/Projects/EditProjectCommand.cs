@@ -11,8 +11,8 @@ namespace IBA_Project1.Commands
     public class EditProjectCommand : ICommand
     {
         public event EventHandler CanExecuteChanged;
-        private readonly ProjectViewModel _vModel;
-        public EditProjectCommand(ProjectViewModel projectViewModel)
+        private readonly VModel _vModel;
+        public EditProjectCommand(VModel projectViewModel)
         {
             _vModel = projectViewModel;
         }
@@ -21,20 +21,16 @@ namespace IBA_Project1.Commands
             return true;
         }
 
-       /* public void Execute(object newName, object currentProject)
-        {
-            var project = (Project)currentProject;
-            var name = (string)newName;
-            _vModel.Project.Id = project.Id;
-            _vModel.Project.Name = name;
-            _vModel.Update();
-        }*/
-
+      
         public void Execute(object parameter)
         {
+            if(parameter == null)
+            {
+                throw new ArgumentNullException();
+            }
             var newName = (string)parameter;
-            _vModel.Update(newName);
-            _vModel.GetData();
+            _vModel.UpdateProject(newName);
+            _vModel.GetDataProjects();
         }
     }
 }

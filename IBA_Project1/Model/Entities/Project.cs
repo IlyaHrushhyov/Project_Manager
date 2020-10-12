@@ -10,8 +10,7 @@ namespace IBA_Project1
 {
     public class Project: ModelBase
     {
-       /* [Key]
-        public int Id { get; set; }*/
+      
         public string Name { get; set; }
         public virtual ICollection<Objective> Objectives { get; set; }
     }

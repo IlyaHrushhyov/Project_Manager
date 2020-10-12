@@ -6,7 +6,8 @@
         xmlns:views="clr-namespace:IBA_Project1.View.UserControls"
         xmlns:viewmodels="clr-namespace:IBA_Project1.ViewModel"
         mc:Ignorable="d" FontFamily="Segoe UI Light"
-        Title="Project manager" Height="450" Width="800">
+        Title="Project manager" Height="450" Width="800" ResizeMode="CanResizeWithGrip"
+        WindowStartupLocation="CenterScreen" >
     <Grid>
         <TabControl x:Name="Manager">
             <TabItem x:Name="projectsTab">
@@ -20,8 +21,10 @@
                                    LoadCommand="{Binding LoadProjectsCommand}"
                                    SelectedChangedCommand="{Binding SelectionProjectChangedCommand}"
                                    TextBoxBinding="{Binding ProjectName}"
-                                   EditCommand="{Binding UpdateCommand}"
-                                   AddCommand="{Binding AddProjectCommand}"/>
+                                   EditCommand="{Binding UpdateProjectCommand}"
+                                   AddCommand="{Binding AddProjectCommand}"
+                                   DeleteCommand="{Binding DeleteProjectCommand}"
+                                   />
 
             </TabItem>
             <TabItem x:Name="tabletsTab">
@@ -31,7 +34,13 @@
                     </StackPanel>
                 </TabItem.Header>
 
-                <views:UController/>
+                <views:UControl2   DataContext="{Binding VModel}"
+                                   SelectedChangedCommandUC2="{Binding SelectionObjectiveChangedCommand}"
+                                   TextBoxBindingUC2="{Binding ObjectiveName}"
+                                   EditCommandUC2="{Binding UpdateObjectiveCommand}"
+                                   AddCommandUC2="{Binding AddObjectiveCommand}"
+                                   DeleteCommandUC2="{Binding DeleteObjectiveCommand}"
+                    />
 
             </TabItem>
         </TabControl>

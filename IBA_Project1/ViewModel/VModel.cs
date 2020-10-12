@@ -1,0 +1,255 @@
+﻿using IBA_Project1.Command;
+using IBA_Project1.Commands;
+using IBA_Project1.Commands.Objectives;
+using IBA_Project1.Commands.Projects;
+using IBA_Project1.Model;
+using IBA_Project1.Model.Entities;
+using IBA_Project1.Repository;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Data.Entity;
+using System.Diagnostics;
+using System.Dynamic;
+using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Security.AccessControl;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Input;
+
+namespace IBA_Project1.ViewModel
+{
+    public class VModel : BaseViewModel
+    {
+        private UnitOfWork unitOfWork;
+
+        public VModel()
+        {
+
+            LoadProjectsCommand = new LoadProjectsCommand(this);
+            SelectionProjectChangedCommand = new ProjectSelectionChangedCommand(this);
+            UpdateProjectCommand = new EditProjectCommand(this);
+            AddProjectCommand = new AddProjectCommand(this);
+            DeleteProjectCommand = new DeleteProjectCommand(this);
+
+
+            LoadObjectivesCommand = new LoadObjectivesCommand(this);
+            SelectionObjectiveChangedCommand = new ObjectiveSelectionChangedCommand(this);
+            UpdateObjectiveCommand = new EditObjectiveCommand(this);
+            AddObjectiveCommand = new AddObjectiveCommand(this);
+            DeleteObjectiveCommand = new DeleteObjectiveCommand(this);
+
+            unitOfWork = new UnitOfWork();
+
+            Objective = new Objective();
+            Project = new Project();
+        }
+
+        #region Projects
+        private Project project;
+        public Project Project
+        {
+            get => project;
+            set
+            {
+                project = value;
+                OnPropertyChanged(nameof(Project));
+            }
+        }
+        private ObservableCollection<Project> projects;
+        public ObservableCollection<Project> Projects
+        {
+            get
+            {
+                return projects;
+            }
+            set
+            {
+                projects = value;
+                OnPropertyChanged(nameof(Projects));
+            }
+        }
+        private string projectName;
+        public string ProjectName
+        {
+            get => projectName;
+            set
+            {
+                projectName = value;
+                OnPropertyChanged(nameof(ProjectName));
+            }
+        }
+        public ICommand LoadProjectsCommand { get; set; }
+        public ICommand AddProjectCommand { get; set; }
+        public ICommand SelectionProjectChangedCommand { get; set; }
+        public ICommand UpdateProjectCommand { get; set; }
+        public ICommand DeleteProjectCommand { get; set; }
+
+        public async void SaveNewProject(string newName)
+        {
+            var boolFlagEqual = Projects.Any(p => p.Name.Equals(newName));
+            var boolFlagEmpty = newName.Equals("");
+            if (boolFlagEqual == false && boolFlagEmpty == false)
+            {
+                Project.Name = newName;
+                await unitOfWork.Projects.SaveNew(Project);
+                unitOfWork.Save();
+            }
+            else if (boolFlagEqual == true)
+            {
+                MessageBox.Show("Such project already exists");
+            }
+            else if (boolFlagEmpty == true)
+            {
+                MessageBox.Show("Incorrect input, please, try again");
+            }
+
+        }
+        public async void DeleteProject(int id)
+        {
+            await unitOfWork.Projects.Delete(id);
+            unitOfWork.Save();
+        }
+        public async void UpdateProject(string newName)
+        {
+            var boolFlagEqual = Projects.Any(p => p.Name.Equals(newName));
+            var boolFlagEmpty = newName.Equals("");
+            if (boolFlagEqual == false && boolFlagEmpty == false)
+            {
+                Project.Name = newName;
+                await unitOfWork.Projects.Update(Project);
+                unitOfWork.Save();
+            }
+            else if (boolFlagEqual == true)
+            {
+                MessageBox.Show("Such project already exists");
+            }
+            else if (boolFlagEmpty == true)
+            {
+                MessageBox.Show("Incorrect input, please, try again");
+            }
+        }
+        // is used for loading all projects
+        public void GetDataProjects()
+        {
+            var projects = unitOfWork.Projects.Get().Result.ToList();
+            Projects = new ObservableCollection<Project>((IEnumerable<Project>)projects);
+        }
+        // is used to get a single project
+        public async void GetProject(Project obj)
+        {
+            var project = await unitOfWork.Projects.Get(obj.Id);
+            Project = (Project)project;
+        }
+        #endregion
+
+        #region Objectives
+        private Objective objective;
+        public Objective Objective
+        {
+            get => objective;
+            set
+            {
+                objective = value;
+                OnPropertyChanged(nameof(Objective));
+            }
+        }
+        private ObservableCollection<Objective> objectives;
+        public ObservableCollection<Objective> Objectives
+        {
+            get
+            {
+                return objectives;
+            }
+            set
+            {
+                objectives = value;
+                OnPropertyChanged(nameof(Objectives));
+            }
+        }
+        private string objectiveName;
+        public string ObjectiveName
+        {
+            get => objectiveName;
+            set
+            {
+                objectiveName = value;
+                OnPropertyChanged(nameof(ObjectiveName));
+            }
+        }
+        public ICommand LoadObjectivesCommand { get; set; }
+        public ICommand AddObjectiveCommand { get; set; }
+        public ICommand SelectionObjectiveChangedCommand { get; set; }
+        public ICommand UpdateObjectiveCommand { get; set; }
+        public ICommand DeleteObjectiveCommand { get; set; }
+
+        public async void SaveNewObjective(string newName)
+        {
+
+            bool boolFlagEqual = false;
+            if (Objectives != null)
+            {
+                boolFlagEqual = Objectives.Any(p => p.Name.Equals(newName));
+
+            }
+
+            var boolFlagEmpty = newName.Equals("");
+            if (boolFlagEqual == false && boolFlagEmpty == false)
+            {
+                Objective.Name = newName;
+
+                Objective.Project = Project;
+                await unitOfWork.Objectives.SaveNew(Objective);
+                unitOfWork.Save();
+            }
+            else if (boolFlagEqual == true)
+            {
+                MessageBox.Show("Such objective already exists");
+            }
+            else if (boolFlagEmpty == true)
+            {
+                MessageBox.Show("Incorrect input, please, try again");
+            }
+            else
+            {
+                MessageBox.Show("The collection of objectives is empty");
+            }
+        }
+        public async void UpdateObjective(string newName)
+        {
+
+            var boolFlagEqual = Objectives.Any(p => p.Name.Equals(newName));
+            var boolFlagEmpty = newName.Equals("");
+            if (boolFlagEqual == false && boolFlagEmpty == false)
+            {
+                Objective.Name = newName;
+                await unitOfWork.Objectives.Update(Objective);
+                unitOfWork.Save();
+            }
+            else if (boolFlagEqual == true)
+            {
+                MessageBox.Show("Such project already exists");
+            }
+            else if (boolFlagEmpty == true)
+            {
+                MessageBox.Show("Incorrect input, please, try again");
+            }
+        }
+        public async void DeleteObjective(int id)
+        {
+            await unitOfWork.Objectives.Delete(id);
+            unitOfWork.Save();
+        }
+        // is used to get a single project
+        public void GetDataObjectives()
+        {
+            var objectives = unitOfWork.Objectives.GetWithInclude(p => p.Project.Id.Equals(Project.Id), o => o.Project);
+            Objectives = new ObservableCollection<Objective>(objectives);
+        }
+        #endregion
+
+    }
+}

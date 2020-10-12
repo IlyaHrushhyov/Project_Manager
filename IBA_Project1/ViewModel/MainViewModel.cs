@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace IBA_Project1.ViewModel
 {
-    public class MainViewModel: BaseViewModel
+    public class MainViewModel : BaseViewModel
+
     {
-        private ProjectViewModel _vModel;
-        public ProjectViewModel VModel
+        private VModel _vModel;
+        public VModel VModel
         {
             get
             {
@@ -21,9 +22,11 @@ namespace IBA_Project1.ViewModel
                 OnPropertyChanged(nameof(VModel));
             }
         }
+      
         public MainViewModel()
         {
-            VModel = new ProjectViewModel();
+            VModel = new VModel();
+
         }
     }
 }

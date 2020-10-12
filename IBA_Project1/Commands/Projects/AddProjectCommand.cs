@@ -11,8 +11,8 @@ namespace IBA_Project1.Commands
     public class AddProjectCommand : ICommand
     {
         public event EventHandler CanExecuteChanged;
-        private readonly ProjectViewModel _vModel;
-        public AddProjectCommand(ProjectViewModel viewModel)
+        private readonly VModel _vModel;
+        public AddProjectCommand(VModel viewModel)
         {
             _vModel = viewModel;
         }
@@ -23,9 +23,13 @@ namespace IBA_Project1.Commands
 
         public void Execute(object parameter)
         {
+            if(parameter == null)
+            {
+                throw new ArgumentNullException();
+            }
             var newName = (string)parameter;
-            _vModel.SaveNew(newName);
-            _vModel.GetData();
+            _vModel.SaveNewProject(newName);
+            _vModel.GetDataProjects();
         }
     }
 }

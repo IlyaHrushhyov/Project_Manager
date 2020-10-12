@@ -1,4 +1,4 @@
-﻿using IBA_Project1.Repository;
+﻿using IBA_Project1.Model.Entities;
 using IBA_Project1.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -7,15 +7,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace IBA_Project1.Command
+namespace IBA_Project1.Commands.Objectives
 {
-    public class LoadProjectsCommand: ICommand
+    public class LoadObjectivesCommand : ICommand
     {
         public event EventHandler CanExecuteChanged;
 
-        private readonly ProjectViewModel _vModel;
-        
-        public LoadProjectsCommand(ProjectViewModel vModel)
+        private readonly VModel _vModel;
+
+        public LoadObjectivesCommand(VModel vModel)
         {
             _vModel = vModel;
         }
@@ -27,8 +27,8 @@ namespace IBA_Project1.Command
 
         public void Execute(object parameter)
         {
-            // Get todo list items from API.
-            _vModel.GetData();
+           
+            _vModel.GetDataObjectives();
         }
     }
 }
