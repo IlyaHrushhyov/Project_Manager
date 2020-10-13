@@ -5,7 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:views="clr-namespace:IBA_Project1.View.UserControls"
         xmlns:viewmodels="clr-namespace:IBA_Project1.ViewModel"
-        mc:Ignorable="d" FontFamily="Segoe UI Light"
+        mc:Ignorable="d"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
         Title="Project manager" Height="450" Width="800" MinHeight="200" MinWidth="400" ResizeMode="CanResizeWithGrip"
         WindowStartupLocation="CenterScreen" >
     <Grid>
