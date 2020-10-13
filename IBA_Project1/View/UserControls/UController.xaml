@@ -19,15 +19,15 @@
         <Grid Grid.Column="0">
             
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="350*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             
-            <ListView x:Name="ListView" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
-      Width="450" Height="450" Background="HoneyDew"  
+            <ListView x:Name="ListView" Grid.Column="0" Grid.Row="0"
+      Background="HoneyDew"  
       IsSynchronizedWithCurrentItem="true" ItemsSource="{Binding Projects}" SelectionMode="Single" SelectionChanged="ListView_SelectionChanged" >
 
 

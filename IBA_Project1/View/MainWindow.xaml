@@ -6,7 +6,7 @@
         xmlns:views="clr-namespace:IBA_Project1.View.UserControls"
         xmlns:viewmodels="clr-namespace:IBA_Project1.ViewModel"
         mc:Ignorable="d" FontFamily="Segoe UI Light"
-        Title="Project manager" Height="450" Width="800" ResizeMode="CanResizeWithGrip"
+        Title="Project manager" Height="450" Width="800" MinHeight="200" MinWidth="400" ResizeMode="CanResizeWithGrip"
         WindowStartupLocation="CenterScreen" >
     <Grid>
         <TabControl x:Name="Manager">

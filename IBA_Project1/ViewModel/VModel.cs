@@ -190,14 +190,19 @@ namespace IBA_Project1.ViewModel
         {
 
             bool boolFlagEqual = false;
+            bool boolFlagChoosenProject = false;
             if (Objectives != null)
             {
                 boolFlagEqual = Objectives.Any(p => p.Name.Equals(newName));
 
             }
-
+            if(Project.Id == 0)
+            {
+                boolFlagChoosenProject = true;
+            }
             var boolFlagEmpty = newName.Equals("");
-            if (boolFlagEqual == false && boolFlagEmpty == false)
+            if (boolFlagEqual == false && boolFlagEmpty == false
+                && boolFlagChoosenProject == false)
             {
                 Objective.Name = newName;
 
@@ -212,6 +217,10 @@ namespace IBA_Project1.ViewModel
             else if (boolFlagEmpty == true)
             {
                 MessageBox.Show("Incorrect input, please, try again");
+            }
+            else if (boolFlagChoosenProject == true)
+            {
+                MessageBox.Show("No choosen project");
             }
             else
             {

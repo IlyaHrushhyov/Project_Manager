@@ -3,6 +3,7 @@ using IBA_Project1.Repository;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
@@ -56,7 +57,9 @@ namespace IBA_Project1.Model.Repository
         // Edit element
         public async Task Update(Objective objective)
         {
-            await Task.FromResult(_context.Entry(objective).State = EntityState.Modified);
+            //var local = _context.Set<Object>().Local.FirstOrDefault(o=>o.)
+            //await Task.FromResult(_context.Entry(objective).State = EntityState.Modified);
+            _context.Set<Objective>().AddOrUpdate(objective);
         }
 
         public IEnumerable<Objective> GetWithInclude(params Expression<Func<Objective, object>>[] includeProperties)

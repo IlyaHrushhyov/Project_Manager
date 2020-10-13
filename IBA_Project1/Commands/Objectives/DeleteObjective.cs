@@ -28,11 +28,14 @@ namespace IBA_Project1.Commands.Objectives
             {
                 throw new ArgumentNullException();
             }
-
-            var objective = (Objective)parameter;
-            var id = objective.Id;
-            _vModel.DeleteObjective(id);
-            _vModel.GetDataObjectives();
+            else
+            {
+                var objective = (Objective)parameter;
+                var id = objective.Id;
+                _vModel.DeleteObjective(id);
+                _vModel.GetDataObjectives();
+            }
+            
         }
     }
 }

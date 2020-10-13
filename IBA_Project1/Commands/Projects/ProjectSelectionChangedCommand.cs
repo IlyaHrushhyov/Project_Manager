@@ -22,15 +22,18 @@ namespace IBA_Project1.Commands
         {
             if (parameter == null)
             {
-                throw new ArgumentNullException();
+                
             }
-            
-            var project = (Project)parameter;
-            _VModel.Project = project;
-            _VModel.ProjectName = project.Name;
+            else
+            {
+                var project = (Project)parameter;
+                _VModel.Project = project;
+                _VModel.ProjectName = project.Name;
 
-            
-            _VModel.GetDataObjectives();
+
+                _VModel.GetDataObjectives();
+            }
+           
         }
     }
 }

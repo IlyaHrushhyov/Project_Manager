@@ -25,12 +25,17 @@ namespace IBA_Project1.Commands.Projects
         {
             if(parameter == null)
             {
-                throw new ArgumentNullException();
+                
             }
-            var project = (Project)parameter;
-            var id = project.Id;
-            _vModel.DeleteProject(id);
-            _vModel.GetDataProjects();
+            else
+            {
+                var project = (Project)parameter;
+                var id = project.Id;
+                _vModel.DeleteProject(id);
+                _vModel.GetDataProjects();
+                _vModel.GetDataObjectives();
+            }
+           
         }
     }
 }

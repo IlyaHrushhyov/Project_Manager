@@ -9,12 +9,12 @@
              x:Name="UserControl2">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="450"></ColumnDefinition>
-            <ColumnDefinition Width="350"></ColumnDefinition>
+            <ColumnDefinition Width="450*"></ColumnDefinition>
+            <ColumnDefinition Width="350*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <ListView x:Name="ListView" Grid.Column="0" HorizontalAlignment="Left" 
-      Width="450" Height="450" Background="HoneyDew"
+        <ListView x:Name="ListView" Grid.Column="0"
+       Background="HoneyDew"
       IsSynchronizedWithCurrentItem="true" ItemsSource="{Binding Objectives}" SelectionMode="Single" SelectionChanged="ListView_SelectionChanged">
 
 
@@ -46,8 +46,8 @@
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="175"></ColumnDefinition>
-                <ColumnDefinition Width="175"></ColumnDefinition>
+                <ColumnDefinition Width="175*"></ColumnDefinition>
+                <ColumnDefinition Width="175*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
             <Border Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Margin="1" BorderThickness="2"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>

@@ -25,11 +25,15 @@ namespace IBA_Project1.Commands
         {
             if(parameter == null)
             {
-                throw new ArgumentNullException();
+                
             }
-            var newName = (string)parameter;
-            _vModel.SaveNewProject(newName);
-            _vModel.GetDataProjects();
+            else
+            {
+                var newName = (string)parameter;
+                _vModel.SaveNewProject(newName);
+                _vModel.GetDataProjects();
+            }
+           
         }
     }
 }

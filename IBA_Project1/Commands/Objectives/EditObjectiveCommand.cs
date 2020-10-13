@@ -26,11 +26,15 @@ namespace IBA_Project1.Commands.Objectives
         {
             if(parameter == null)
             {
-                throw new ArgumentNullException();
+                
             }
-            var newName = (string)parameter;
-            _vModel.UpdateObjective(newName);
-            _vModel.GetDataObjectives();
+            else
+            {
+                var newName = (string)parameter;
+                _vModel.UpdateObjective(newName);
+                _vModel.GetDataObjectives();
+            }
+            
         }
 
     }
