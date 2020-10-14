@@ -13,7 +13,6 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="450*"></ColumnDefinition>
-            <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="350*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
@@ -28,8 +27,7 @@
             </Grid.ColumnDefinitions>
             
             <ListView x:Name="ListView" Grid.Column="0" Grid.Row="0"
-      Background="HoneyDew"  
-      IsSynchronizedWithCurrentItem="true" ItemsSource="{Binding Projects}" SelectionMode="Single" SelectionChanged="ListView_SelectionChanged" >
+            IsSynchronizedWithCurrentItem="true" ItemsSource="{Binding Projects}" SelectionMode="Single" SelectionChanged="ListView_SelectionChanged" >
 
 
 
@@ -43,11 +41,9 @@
             </ListView>
         </Grid>
         
-        <Grid Grid.Column="1">
-            <Line Grid.Column="1" Stretch="Fill" X2="1"/>
-        </Grid>
         
-        <Grid Grid.Column="2" Background="AliceBlue">
+        
+        <Grid Grid.Column="1" Background="AliceBlue">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="Auto"></RowDefinition>
@@ -64,10 +60,10 @@
             <Border Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Margin="1" BorderThickness="2"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
 
 
-            <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" FontSize="15" Content="Change" HorizontalAlignment="Center"></Label>
+            <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" FontSize="15" Content="Edit" HorizontalAlignment="Center"></Label>
             <Label Grid.Row="1" Grid.Column="0" FontSize="15" Content="Name:"></Label>
-            <TextBox Grid.Row="2" Grid.ColumnSpan="2" Margin="3" MinWidth="15" MinHeight="20" FontSize="20"  Name ="TextBox" Text="{Binding Path=TextBoxBinding, 
-                Mode=OneWay, UpdateSourceTrigger=PropertyChanged, ElementName=UControl}"></TextBox>
+            <TextBox Grid.Row="2" Grid.ColumnSpan="2" Margin="3" MinWidth="15" MinHeight="20" FontSize="20"  Name ="TextBox"
+                     Text="{Binding Path=TextBoxBinding, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, ElementName=UControl}"></TextBox>
             <Button Grid.Row="3" Grid.Column ="0" Style="{StaticResource MaterialDesignRaisedButton}"
             Height="50" Margin="3" ToolTip="Add new item" Content="Add" 
                     Name="AddButton" Click="AddButton_Click"></Button>

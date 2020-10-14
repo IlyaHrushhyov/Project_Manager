@@ -57,8 +57,7 @@ namespace IBA_Project1.Model.Repository
         // Edit element
         public async Task Update(Objective objective)
         {
-            //var local = _context.Set<Object>().Local.FirstOrDefault(o=>o.)
-            //await Task.FromResult(_context.Entry(objective).State = EntityState.Modified);
+           
             _context.Set<Objective>().AddOrUpdate(objective);
         }
 

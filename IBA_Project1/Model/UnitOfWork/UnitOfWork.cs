@@ -34,7 +34,14 @@ namespace IBA_Project1.Model
         }
         public void Save()
         {
-            context.SaveChanges();
+            //try
+            //{
+                context.SaveChanges();
+           // }
+            //catch
+            //{
+
+           // }
         }
 
     }

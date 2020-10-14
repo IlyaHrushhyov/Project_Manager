@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace IBA_Project1.Model.Repository
 {
-    public class ProjectRepository : IRepository<Project>
+    public class ProjectRepository : IRepositoryBase<Project>
     {
         private Context _context;
 
@@ -49,6 +50,7 @@ namespace IBA_Project1.Model.Repository
             }
 
             await Task.FromResult(_context.Projects.Add(entity));
+            //_context.Set<Project>().AddOrUpdate(entity);
 
         }
 
@@ -58,7 +60,7 @@ namespace IBA_Project1.Model.Repository
             await Task.FromResult(_context.Entry(project).State = EntityState.Modified);
         }
 
-        public IEnumerable<Project> GetWithInclude(params Expression<Func<Project, object>>[] includeProperties)
+      /*  public IEnumerable<Project> GetWithInclude(params Expression<Func<Project, object>>[] includeProperties)
         {
             throw new NotImplementedException();
         }
@@ -67,7 +69,7 @@ namespace IBA_Project1.Model.Repository
         {
             throw new NotImplementedException();
         }
-
+*/
 
     }
 }

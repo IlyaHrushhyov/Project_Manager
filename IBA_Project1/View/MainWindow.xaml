@@ -13,7 +13,7 @@
         TextOptions.TextRenderingMode="Auto"
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        Title="Project manager" Height="450" Width="800" MinHeight="200" MinWidth="400" ResizeMode="CanResizeWithGrip"
+        Title="Project manager" Height="450" Width="800" MinHeight="270" MinWidth="400" ResizeMode="CanResizeWithGrip"
         WindowStartupLocation="CenterScreen" >
     <Grid>
         <TabControl x:Name="Manager">

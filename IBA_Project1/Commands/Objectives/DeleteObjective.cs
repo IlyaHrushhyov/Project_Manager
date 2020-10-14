@@ -26,7 +26,7 @@ namespace IBA_Project1.Commands.Objectives
         {
             if(parameter == null)
             {
-                throw new ArgumentNullException();
+               
             }
             else
             {
