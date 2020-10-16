@@ -28,6 +28,7 @@ namespace IBA_Project1.Commands.Projects
                 var project = (Project)parameter;
                 var id = project.Id;
                 _vModel.DeleteProject(id);
+                _vModel.GetDataProjects();
                 _vModel.GetDataObjectives();
             }
            

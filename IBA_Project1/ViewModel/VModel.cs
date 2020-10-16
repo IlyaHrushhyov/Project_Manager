@@ -102,7 +102,7 @@ namespace IBA_Project1.ViewModel
         }
         public async void DeleteProject(int id)
         {
-            Projects.Remove(Projects.Where(p => p.Id == id).First());
+            
             await unitOfWork.Projects.Delete(id);
             unitOfWork.Save();
         }
@@ -200,7 +200,7 @@ namespace IBA_Project1.ViewModel
                 
                 Objective.Name = newName;
                 Objective.Project = Project;
-                Objectives.Add(Objective);
+                
                 await unitOfWork.Objectives.SaveNew(Objective);
                 unitOfWork.Save();
             }
