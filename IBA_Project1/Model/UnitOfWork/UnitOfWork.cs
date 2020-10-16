@@ -1,10 +1,4 @@
 ﻿using IBA_Project1.Model.Repository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Permissions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace IBA_Project1.Model
 {
@@ -34,14 +28,7 @@ namespace IBA_Project1.Model
         }
         public void Save()
         {
-            //try
-            //{
-                context.SaveChanges();
-           // }
-            //catch
-            //{
-
-           // }
+            context.SaveChanges();
         }
 
     }

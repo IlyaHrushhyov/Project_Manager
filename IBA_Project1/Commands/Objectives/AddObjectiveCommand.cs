@@ -1,9 +1,5 @@
 ﻿using IBA_Project1.ViewModel;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace IBA_Project1.Commands.Objectives
@@ -31,7 +27,7 @@ namespace IBA_Project1.Commands.Objectives
             {
                 var newName = (string)parameter;
                 _vModel.SaveNewObjective(newName);
-                _vModel.GetDataObjectives();
+              
             }
             
         }

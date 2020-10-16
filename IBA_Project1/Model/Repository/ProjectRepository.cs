@@ -1,11 +1,7 @@
 ﻿using IBA_Project1.Repository;
 using System;
-using System.Collections.Generic;
 using System.Data.Entity;
-using System.Data.Entity.Migrations;
 using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace IBA_Project1.Model.Repository
@@ -49,9 +45,9 @@ namespace IBA_Project1.Model.Repository
                 throw new ArgumentNullException("element");
             }
 
-            await Task.FromResult(_context.Projects.Add(entity));
-            //_context.Set<Project>().AddOrUpdate(entity);
 
+            await Task.FromResult(_context.Projects.Add(entity));
+           
         }
 
         // Edit element
@@ -59,17 +55,6 @@ namespace IBA_Project1.Model.Repository
         {
             await Task.FromResult(_context.Entry(project).State = EntityState.Modified);
         }
-
-      /*  public IEnumerable<Project> GetWithInclude(params Expression<Func<Project, object>>[] includeProperties)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<Project> GetWithInclude(Func<Project, bool> predicate, params Expression<Func<Project, object>>[] includeProperties)
-        {
-            throw new NotImplementedException();
-        }
-*/
 
     }
 }

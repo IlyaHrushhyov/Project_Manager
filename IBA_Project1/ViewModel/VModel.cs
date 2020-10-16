@@ -4,19 +4,9 @@ using IBA_Project1.Commands.Objectives;
 using IBA_Project1.Commands.Projects;
 using IBA_Project1.Model;
 using IBA_Project1.Model.Entities;
-using IBA_Project1.Repository;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Data.Entity;
-using System.Diagnostics;
-using System.Dynamic;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Security.AccessControl;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
@@ -94,7 +84,9 @@ namespace IBA_Project1.ViewModel
             var boolFlagEmpty = newName.Equals("");
             if (boolFlagEqual == false && boolFlagEmpty == false)
             {
+
                 Project.Name = newName;
+                Projects.Add(Project);
                 await unitOfWork.Projects.SaveNew(Project);
                 unitOfWork.Save();
             }
@@ -110,6 +102,7 @@ namespace IBA_Project1.ViewModel
         }
         public async void DeleteProject(int id)
         {
+            Projects.Remove(Projects.Where(p => p.Id == id).First());
             await unitOfWork.Projects.Delete(id);
             unitOfWork.Save();
         }
@@ -132,13 +125,13 @@ namespace IBA_Project1.ViewModel
                 MessageBox.Show("Incorrect input, please, try again");
             }
         }
-        // is used for loading all projects
+        
         public void GetDataProjects()
         {
             var projects = unitOfWork.Projects.Get().Result.ToList();
             Projects = new ObservableCollection<Project>((IEnumerable<Project>)projects);
         }
-        // is used to get a single project
+       
         public async void GetProject(Project obj)
         {
             var project = await unitOfWork.Projects.Get(obj.Id);
@@ -204,9 +197,10 @@ namespace IBA_Project1.ViewModel
             if (boolFlagEqual == false && boolFlagEmpty == false
                 && boolFlagChoosenProject == false)
             {
+                
                 Objective.Name = newName;
-
                 Objective.Project = Project;
+                Objectives.Add(Objective);
                 await unitOfWork.Objectives.SaveNew(Objective);
                 unitOfWork.Save();
             }
@@ -249,10 +243,11 @@ namespace IBA_Project1.ViewModel
         }
         public async void DeleteObjective(int id)
         {
+            Objectives.Remove(Objectives.Where(o => o.Id == id).First());
             await unitOfWork.Objectives.Delete(id);
             unitOfWork.Save();
         }
-        // is used to get a single project
+        
         public void GetDataObjectives()
         {
             var objectives = unitOfWork.Objectives.GetWithInclude(p => p.Project.Id.Equals(Project.Id), o => o.Project);

@@ -6,7 +6,6 @@ using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace IBA_Project1.Model.Repository
@@ -50,7 +49,9 @@ namespace IBA_Project1.Model.Repository
                 throw new ArgumentNullException("element");
             }
 
-            await Task.FromResult(_context.Objectives.Add(entity));
+            await Task.FromResult(_context.Entry(entity).State = EntityState.Added);
+            await Task.FromResult(_context.SaveChanges());
+            await Task.FromResult(_context.Entry(entity).State = EntityState.Detached);
 
         }
 
@@ -61,6 +62,7 @@ namespace IBA_Project1.Model.Repository
             _context.Set<Objective>().AddOrUpdate(objective);
         }
 
+        #region MethodsToGetObjectives
         public IEnumerable<Objective> GetWithInclude(params Expression<Func<Objective, object>>[] includeProperties)
         {
             IQueryable<Objective> query = _context.Set<Objective>().AsNoTracking();
@@ -80,5 +82,7 @@ namespace IBA_Project1.Model.Repository
             var query = Include(includeProperties);
             return query.Where(predicate).ToList();
         }
+        #endregion
+
     }
 }

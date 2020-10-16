@@ -1,10 +1,6 @@
 ﻿using IBA_Project1.Model.Entities;
 using IBA_Project1.ViewModel;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace IBA_Project1.Commands.Objectives
@@ -33,7 +29,7 @@ namespace IBA_Project1.Commands.Objectives
                 var objective = (Objective)parameter;
                 var id = objective.Id;
                 _vModel.DeleteObjective(id);
-                _vModel.GetDataObjectives();
+              
             }
             
         }
