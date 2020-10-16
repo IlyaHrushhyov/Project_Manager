@@ -28,7 +28,6 @@ namespace IBA_Project1.Commands
             {
                 var newName = (string)parameter;
                 _vModel.UpdateProject(newName);
-                //_vModel.GetDataProjects();
             }
            
         }

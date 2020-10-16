@@ -29,8 +29,6 @@ namespace IBA_Project1.Commands
                 var project = (Project)parameter;
                 _VModel.Project = project;
                 _VModel.ProjectName = project.Name;
-
-
                 _VModel.GetDataObjectives();
             }
            
