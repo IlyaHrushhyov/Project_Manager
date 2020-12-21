@@ -58,8 +58,11 @@ namespace IBA_Project1.Model.Repository
         // Edit element
         public async Task Update(Objective objective)
         {
-           
-            _context.Set<Objective>().AddOrUpdate(objective);
+            //_context.Set<Objective>().AddOrUpdate(objective);
+
+            Objective existing = await _context.Objectives.FindAsync(objective.Id);
+            existing.Name = objective.Name;
+            await _context.SaveChangesAsync();
         }
 
         #region MethodsToGetObjectives

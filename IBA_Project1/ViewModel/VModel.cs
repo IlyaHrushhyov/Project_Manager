@@ -55,7 +55,6 @@ namespace IBA_Project1.ViewModel
             }
         }
 
-        //
         private Project projectForAdding;
         public Project ProjectForAdding
         {
@@ -63,10 +62,8 @@ namespace IBA_Project1.ViewModel
             set
             {
                 projectForAdding = value;
-                //OnPropertyChanged(nameof(ProjectForAdding));
             }
         }
-        //
         private ObservableCollection<Project> projects;
         public ObservableCollection<Project> Projects
         {
@@ -103,26 +100,14 @@ namespace IBA_Project1.ViewModel
             if (boolFlagEqual == false && boolFlagEmpty == false)
             {
 
-                /*  Project.Name = newName;
-                  Projects.Add(Project);
-                  await unitOfWork.Projects.SaveNew(Project);
-                  unitOfWork.Save();
-                  // new to avoid bug(no instant add new project display)
-                  ICollectionView view = CollectionViewSource.GetDefaultView(Projects);
-                  view.Refresh();
-                  //*/
-
                 ProjectForAdding.Name = newName;
                 Projects.Add(ProjectForAdding);
                 await unitOfWork.Projects.SaveNew(ProjectForAdding);
                 unitOfWork.Save();
 
-                // new to avoid bug(no instant add new project display)
-                //GetDataProjects();
-                
+           
                 ICollectionView view = CollectionViewSource.GetDefaultView(Projects);
                 view.Refresh();
-                //
             }
             else if (boolFlagEqual == true)
             {
@@ -150,14 +135,9 @@ namespace IBA_Project1.ViewModel
                 await unitOfWork.Projects.Update(Project);
                 unitOfWork.Save();
 
-                // new to avoid bug(no instant edit display)
-                //GetDataProjects();
-                //
-
-                // new to avoid bug(no instant edit display)
+               
                 ICollectionView view = CollectionViewSource.GetDefaultView(Projects);
                 view.Refresh();
-                //
             }
             else if (boolFlagEqual == true)
             {
@@ -194,7 +174,7 @@ namespace IBA_Project1.ViewModel
             }
         }
 
-        //
+
         private Objective objectiveForAdding;
         public Objective ObjectiveForAdding
         {
@@ -205,7 +185,7 @@ namespace IBA_Project1.ViewModel
                 
             }
         }
-        //
+ 
         private ObservableCollection<Objective> objectives;
         public ObservableCollection<Objective> Objectives
         {
@@ -254,26 +234,14 @@ namespace IBA_Project1.ViewModel
                 && boolFlagChoosenProject == false)
             {
 
-                /*Objective.Name = newName;
-                Objective.Project = Project;
-                
-                await unitOfWork.Objectives.SaveNew(Objective);
-                unitOfWork.Save();
-
-                /// new to avoid bug(no instant add display)
-                GetDataObjectives();
-                //*/
-
                 ObjectiveForAdding.Name = newName;
                 ObjectiveForAdding.Project = Project;
                 Objectives.Add(ObjectiveForAdding);
                 await unitOfWork.Objectives.SaveNew(ObjectiveForAdding);
                 unitOfWork.Save();
 
-                // new to avoid bug(no instant add new project display)
                 ICollectionView view = CollectionViewSource.GetDefaultView(Objectives);
                 view.Refresh();
-                //
             }
             else if (boolFlagEqual == true)
             {
@@ -302,11 +270,9 @@ namespace IBA_Project1.ViewModel
                 Objective.Name = newName;
                 await unitOfWork.Objectives.Update(Objective);
                 unitOfWork.Save();
-                //
                 
                 ICollectionView view = CollectionViewSource.GetDefaultView(Objectives);
                 view.Refresh();
-                //
             }
             else if (boolFlagEqual == true)
             {
