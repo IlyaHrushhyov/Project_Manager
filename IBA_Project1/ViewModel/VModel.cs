@@ -20,7 +20,6 @@ namespace IBA_Project1.ViewModel
 
         public VModel()
         {
-
             LoadProjectsCommand = new LoadProjectsCommand(this);
             SelectionProjectChangedCommand = new ProjectSelectionChangedCommand(this);
             UpdateProjectCommand = new EditProjectCommand(this);
