@@ -6,8 +6,10 @@ using IBA_Project1.Model;
 using IBA_Project1.Model.Entities;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Windows;
+using System.Windows.Data;
 using System.Windows.Input;
 
 namespace IBA_Project1.ViewModel
@@ -36,6 +38,9 @@ namespace IBA_Project1.ViewModel
 
             Objective = new Objective();
             Project = new Project();
+
+            ProjectForAdding = new Project();
+            ObjectiveForAdding = new Objective();
         }
 
         #region Projects
@@ -49,6 +54,19 @@ namespace IBA_Project1.ViewModel
                 OnPropertyChanged(nameof(Project));
             }
         }
+
+        //
+        private Project projectForAdding;
+        public Project ProjectForAdding
+        {
+            get => projectForAdding;
+            set
+            {
+                projectForAdding = value;
+                //OnPropertyChanged(nameof(ProjectForAdding));
+            }
+        }
+        //
         private ObservableCollection<Project> projects;
         public ObservableCollection<Project> Projects
         {
@@ -85,14 +103,30 @@ namespace IBA_Project1.ViewModel
             if (boolFlagEqual == false && boolFlagEmpty == false)
             {
 
-                Project.Name = newName;
-                Projects.Add(Project);
-                await unitOfWork.Projects.SaveNew(Project);
+                /*  Project.Name = newName;
+                  Projects.Add(Project);
+                  await unitOfWork.Projects.SaveNew(Project);
+                  unitOfWork.Save();
+                  // new to avoid bug(no instant add new project display)
+                  ICollectionView view = CollectionViewSource.GetDefaultView(Projects);
+                  view.Refresh();
+                  //*/
+
+                ProjectForAdding.Name = newName;
+                Projects.Add(ProjectForAdding);
+                await unitOfWork.Projects.SaveNew(ProjectForAdding);
                 unitOfWork.Save();
+
+                // new to avoid bug(no instant add new project display)
+                //GetDataProjects();
+                
+                ICollectionView view = CollectionViewSource.GetDefaultView(Projects);
+                view.Refresh();
+                //
             }
             else if (boolFlagEqual == true)
             {
-                MessageBox.Show("Such project already exists");
+                MessageBox.Show("Such record already exists");
             }
             else if (boolFlagEmpty == true)
             {
@@ -102,9 +136,9 @@ namespace IBA_Project1.ViewModel
         }
         public async void DeleteProject(int id)
         {
-            
             await unitOfWork.Projects.Delete(id);
             unitOfWork.Save();
+
         }
         public async void UpdateProject(string newName)
         {
@@ -115,10 +149,19 @@ namespace IBA_Project1.ViewModel
                 Project.Name = newName;
                 await unitOfWork.Projects.Update(Project);
                 unitOfWork.Save();
+
+                // new to avoid bug(no instant edit display)
+                //GetDataProjects();
+                //
+
+                // new to avoid bug(no instant edit display)
+                ICollectionView view = CollectionViewSource.GetDefaultView(Projects);
+                view.Refresh();
+                //
             }
             else if (boolFlagEqual == true)
             {
-                MessageBox.Show("Such project already exists");
+                MessageBox.Show("Such record already exists");
             }
             else if (boolFlagEmpty == true)
             {
@@ -150,6 +193,19 @@ namespace IBA_Project1.ViewModel
                 OnPropertyChanged(nameof(Objective));
             }
         }
+
+        //
+        private Objective objectiveForAdding;
+        public Objective ObjectiveForAdding
+        {
+            get => objectiveForAdding;
+            set
+            {
+                objectiveForAdding = value;
+                
+            }
+        }
+        //
         private ObservableCollection<Objective> objectives;
         public ObservableCollection<Objective> Objectives
         {
@@ -197,16 +253,31 @@ namespace IBA_Project1.ViewModel
             if (boolFlagEqual == false && boolFlagEmpty == false
                 && boolFlagChoosenProject == false)
             {
-                
-                Objective.Name = newName;
+
+                /*Objective.Name = newName;
                 Objective.Project = Project;
                 
                 await unitOfWork.Objectives.SaveNew(Objective);
                 unitOfWork.Save();
+
+                /// new to avoid bug(no instant add display)
+                GetDataObjectives();
+                //*/
+
+                ObjectiveForAdding.Name = newName;
+                ObjectiveForAdding.Project = Project;
+                Objectives.Add(ObjectiveForAdding);
+                await unitOfWork.Objectives.SaveNew(ObjectiveForAdding);
+                unitOfWork.Save();
+
+                // new to avoid bug(no instant add new project display)
+                ICollectionView view = CollectionViewSource.GetDefaultView(Objectives);
+                view.Refresh();
+                //
             }
             else if (boolFlagEqual == true)
             {
-                MessageBox.Show("Such objective already exists");
+                MessageBox.Show("Such record already exists");
             }
             else if (boolFlagEmpty == true)
             {
@@ -231,10 +302,15 @@ namespace IBA_Project1.ViewModel
                 Objective.Name = newName;
                 await unitOfWork.Objectives.Update(Objective);
                 unitOfWork.Save();
+                //
+                
+                ICollectionView view = CollectionViewSource.GetDefaultView(Objectives);
+                view.Refresh();
+                //
             }
             else if (boolFlagEqual == true)
             {
-                MessageBox.Show("Such project already exists");
+                MessageBox.Show("Such record already exists");
             }
             else if (boolFlagEmpty == true)
             {

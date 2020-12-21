@@ -27,7 +27,7 @@ namespace IBA_Project1.Commands.Objectives
             {
                 var newName = (string)parameter;
                 _vModel.SaveNewObjective(newName);
-              
+                
             }
             
         }
