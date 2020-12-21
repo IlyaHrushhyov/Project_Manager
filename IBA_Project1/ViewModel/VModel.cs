@@ -99,7 +99,7 @@ namespace IBA_Project1.ViewModel
             var boolFlagEmpty = newName.Equals("");
             if (boolFlagEqual == false && boolFlagEmpty == false)
             {
-
+                ProjectForAdding = new Project();
                 ProjectForAdding.Name = newName;
                 Projects.Add(ProjectForAdding);
                 await unitOfWork.Projects.SaveNew(ProjectForAdding);
@@ -233,7 +233,7 @@ namespace IBA_Project1.ViewModel
             if (boolFlagEqual == false && boolFlagEmpty == false
                 && boolFlagChoosenProject == false)
             {
-
+                ObjectiveForAdding = new Objective();
                 ObjectiveForAdding.Name = newName;
                 ObjectiveForAdding.Project = Project;
                 Objectives.Add(ObjectiveForAdding);

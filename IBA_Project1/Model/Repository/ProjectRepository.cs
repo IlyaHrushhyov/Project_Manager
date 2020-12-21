@@ -46,8 +46,10 @@ namespace IBA_Project1.Model.Repository
             }
 
 
-            await Task.FromResult(_context.Projects.Add(entity));
-           
+            //await Task.FromResult(_context.Projects.Add(entity));
+
+            _context.Projects.Add(entity);
+            await _context.SaveChangesAsync();
         }
 
         // Edit element
