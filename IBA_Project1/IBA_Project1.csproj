@@ -90,6 +90,7 @@
     <Compile Include="Commands\Projects\EditProjectCommand.cs" />
     <Compile Include="Commands\Projects\LoadProjectsCommand.cs" />
     <Compile Include="Commands\Projects\ProjectSelectionChangedCommand.cs" />
+    <Compile Include="Commands\UI_Elements\TextBoxChangedCommand.cs" />
     <Compile Include="Migrations\202009282115109_IdMovedToInterface.cs" />
     <Compile Include="Migrations\202009282115109_IdMovedToInterface.designer.cs">
       <DependentUpon>202009282115109_IdMovedToInterface.cs</DependentUpon>

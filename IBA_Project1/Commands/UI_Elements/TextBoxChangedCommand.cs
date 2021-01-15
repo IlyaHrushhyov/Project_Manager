@@ -2,13 +2,13 @@
 using System;
 using System.Windows.Input;
 
-namespace IBA_Project1.Commands.Projects
+namespace IBA_Project1.Commands.UI_Elements
 {
-    public class DeleteProjectCommand : ICommand
+    class TextBoxChangedCommand : ICommand
     {
         public event EventHandler CanExecuteChanged;
         private readonly VModel _vModel;
-        public DeleteProjectCommand(VModel viewModel)
+        public TextBoxChangedCommand(VModel viewModel)
         {
             _vModel = viewModel;
         }
@@ -19,24 +19,20 @@ namespace IBA_Project1.Commands.Projects
 
         public void Execute(object parameter)
         {
-            if(parameter == null)
+            var newName = (string)parameter;
+            _vModel.TextBoxValue = newName;
+            if (newName == "")
             {
-                
+                _vModel.CheckForAddInProjects();
+                _vModel.CheckForUpdateСoincidenceInProjects(false);
             }
             else
             {
-                var project = (Project)parameter;
-
-               
-
-                var id = project.Id;
-                _vModel.DeleteProject(id);
-                _vModel.GetDataProjects();
-                _vModel.GetDataObjectives();
-
                 
+                _vModel.CheckForAddInProjects();
+                _vModel.CheckForUpdateСoincidenceInProjects(true);
             }
-           
+
         }
     }
 }

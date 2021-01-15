@@ -31,6 +31,7 @@
                                    EditCommand="{Binding UpdateProjectCommand}"
                                    AddCommand="{Binding AddProjectCommand}"
                                    DeleteCommand="{Binding DeleteProjectCommand}"
+                                   TextBoxChangedCommand="{Binding TextBoxChangedCommand}"
                                    />
 
             </TabItem>

@@ -136,6 +136,29 @@ namespace IBA_Project1.View.UserControls
                 DeleteCommand.Execute(ListView.SelectedItem);
             }
         }
+
+
+        public ICommand TextBoxChangedCommand
+        {
+            get
+            {
+                return (ICommand)GetValue(TextBoxChangedCommandProperty);
+            }
+            set
+            {
+                SetValue(TextBoxChangedCommandProperty, value);
+            }
+        }
+
+        public static readonly DependencyProperty TextBoxChangedCommandProperty =
+           DependencyProperty.Register("TextBoxChangedCommand", typeof(ICommand), typeof(UController), new PropertyMetadata(null));
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (TextBoxChangedCommand != null)
+            {
+                TextBoxChangedCommand.Execute(TextBox.Text);
+            }
+        }
     }
 }
 

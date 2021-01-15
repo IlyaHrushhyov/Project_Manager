@@ -2,8 +2,10 @@
 using IBA_Project1.Commands;
 using IBA_Project1.Commands.Objectives;
 using IBA_Project1.Commands.Projects;
+using IBA_Project1.Commands.UI_Elements;
 using IBA_Project1.Model;
 using IBA_Project1.Model.Entities;
+using IBA_Project1.View.UserControls;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -17,7 +19,7 @@ namespace IBA_Project1.ViewModel
     public class VModel : BaseViewModel
     {
         private UnitOfWork unitOfWork;
-
+    
         public VModel()
         {
             LoadProjectsCommand = new LoadProjectsCommand(this);
@@ -33,6 +35,8 @@ namespace IBA_Project1.ViewModel
             AddObjectiveCommand = new AddObjectiveCommand(this);
             DeleteObjectiveCommand = new DeleteObjectiveCommand(this);
 
+            TextBoxChangedCommand = new TextBoxChangedCommand(this);
+
             unitOfWork = new UnitOfWork();
 
             Objective = new Objective();
@@ -40,7 +44,168 @@ namespace IBA_Project1.ViewModel
 
             ProjectForAdding = new Project();
             ObjectiveForAdding = new Objective();
+
+            
+            EnabledForAddProjects = false;
+            EnabledForUpdateProjects = false;
+            EnabledForDeleteProjects = false;
+            TextBoxNotEmptyProjects = false;
+            TextBoxNotMatchedProjects = false;
+            ProjectIsChoosen = false;
         }
+        #region UI_Elements
+        public ICommand ToDisableElementCommand { get; set; }
+        public ICommand TextBoxChangedCommand { get; set; }
+        private string textBoxValue;
+        public string TextBoxValue
+        {
+            get => textBoxValue;
+            set
+            {
+                textBoxValue = value;
+                OnPropertyChanged(nameof(TextBoxValue));
+            }
+        }
+        private bool enabledForAddProjects;
+        public bool EnabledForAddProjects
+        {
+            get => enabledForAddProjects;
+            set
+            {
+                enabledForAddProjects = value;
+                OnPropertyChanged(nameof(EnabledForAddProjects));
+            }
+        }
+        private bool enabledForUpdateProjects;
+        public bool EnabledForUpdateProjects
+        {
+            get => enabledForUpdateProjects;
+            set
+            {
+                enabledForUpdateProjects = value;
+                OnPropertyChanged(nameof(EnabledForUpdateProjects));
+            }
+        }
+        private bool enabledForDeleteProjects;
+        public bool EnabledForDeleteProjects
+        {
+            get => enabledForDeleteProjects;
+            set
+            {
+                enabledForDeleteProjects = value;
+                OnPropertyChanged(nameof(EnabledForDeleteProjects));
+            }
+        }
+
+        private bool textBoxNotEmptyProjects;
+        public bool TextBoxNotEmptyProjects
+        {
+            get => textBoxNotEmptyProjects;
+            set
+            {
+                textBoxNotEmptyProjects = value;
+                OnPropertyChanged(nameof(TextBoxNotEmptyProjects));
+            }
+        }
+        private bool textBoxNotMatchedProjects;
+        public bool TextBoxNotMatchedProjects
+        {
+            get => textBoxNotMatchedProjects;
+            set
+            {
+                textBoxNotMatchedProjects = value;
+                OnPropertyChanged(nameof(TextBoxNotMatchedProjects));
+            }
+        }
+        private bool projectIsChoosen;
+        public bool ProjectIsChoosen
+        {
+            get => projectIsChoosen;
+            set
+            {
+                projectIsChoosen = value;
+                OnPropertyChanged(nameof(ProjectIsChoosen));
+            }
+        }
+
+        public void CheckForAddInProjects()
+        {
+            var boolFlagEqual = Projects.Any(p => p.Name.Equals(TextBoxValue));
+            var boolFlagEmpty = TextBoxValue.Equals("");
+            if (boolFlagEqual == true || boolFlagEmpty == true)
+            {
+                EnabledForAddProjects = false;
+            }
+            else
+            {
+                EnabledForAddProjects = true;
+            }
+        }
+        /* public void ChekForCorrectTextBoxValueObjectives(string newName)
+         {
+             var boolFlagEqual = Objectives.Any(p => p.Name.Equals(newName));
+             var boolFlagEmpty = newName.Equals("");
+             if (boolFlagEqual == false && boolFlagEmpty == false)
+             {
+
+             }
+         }*/
+        public void CheckForDeleteInProjects(object obj)
+        {
+            var flag = (bool)obj;
+            EnabledForDeleteProjects = flag;
+        }
+        public void CheckForUpdateChoosenInProjects(object obj)
+        {
+
+            /*            var boolFlagChoosen = (bool)obj;
+                        var boolFlagEqual = Projects.Any(p => p.Name.Equals(TextBoxValue));*/
+            TextBoxNotMatchedProjects = Projects.Any(p => p.Name.Equals(TextBoxValue));
+            ProjectIsChoosen = (bool)obj;
+            if(TextBoxNotMatchedProjects == false && ProjectIsChoosen == true
+                && TextBoxNotEmptyProjects == true)
+            {
+                EnabledForUpdateProjects = true;
+            }
+            else
+            {
+                EnabledForUpdateProjects = false;
+            }
+            /*if (boolFlagChoosen == false || boolFlagEqual == true)
+            {
+                EnabledForUpdateProjects = false;
+            }
+            else
+            {
+                EnabledForUpdateProjects = true;
+            }*/
+
+        }
+        public void CheckForUpdateСoincidenceInProjects(object obj)
+        {
+            /*var boolFlagTextBoxNotEmpty = (bool)obj;
+            var boolFlagEqual = Projects.Any(p => p.Name.Equals(TextBoxValue));
+            if (boolFlagTextBoxNotEmpty == false || boolFlagEqual == true)
+            {
+                EnabledForUpdateProjects = false;
+            }
+            else
+            {
+                EnabledForUpdateProjects = true;
+            }*/
+            TextBoxNotMatchedProjects = Projects.Any(p => p.Name.Equals(TextBoxValue));
+            TextBoxNotEmptyProjects = (bool)obj;
+            if (TextBoxNotMatchedProjects == false && ProjectIsChoosen == true
+                && TextBoxNotEmptyProjects == true)
+            {
+                EnabledForUpdateProjects = true;
+            }
+            else
+            {
+                EnabledForUpdateProjects = false;
+            }
+        }
+        #endregion
 
         #region Projects
         private Project project;
@@ -94,10 +259,6 @@ namespace IBA_Project1.ViewModel
 
         public async void SaveNewProject(string newName)
         {
-            var boolFlagEqual = Projects.Any(p => p.Name.Equals(newName));
-            var boolFlagEmpty = newName.Equals("");
-            if (boolFlagEqual == false && boolFlagEmpty == false)
-            {
                 ProjectForAdding = new Project();
                 ProjectForAdding.Name = newName;
                 Projects.Add(ProjectForAdding);
@@ -107,29 +268,22 @@ namespace IBA_Project1.ViewModel
            
                 ICollectionView view = CollectionViewSource.GetDefaultView(Projects);
                 view.Refresh();
-            }
-            else if (boolFlagEqual == true)
-            {
-                MessageBox.Show("Such record already exists");
-            }
-            else if (boolFlagEmpty == true)
-            {
-                MessageBox.Show("Incorrect input, please, try again");
-            }
 
+                CheckForAddInProjects();
         }
         public async void DeleteProject(int id)
         {
+            //
+            Projects.Remove(Project);
+            //
             await unitOfWork.Projects.Delete(id);
             unitOfWork.Save();
 
+            CheckForAddInProjects();
         }
         public async void UpdateProject(string newName)
         {
-            var boolFlagEqual = Projects.Any(p => p.Name.Equals(newName));
-            var boolFlagEmpty = newName.Equals("");
-            if (boolFlagEqual == false && boolFlagEmpty == false)
-            {
+          
                 Project.Name = newName;
                 await unitOfWork.Projects.Update(Project);
                 unitOfWork.Save();
@@ -137,15 +291,6 @@ namespace IBA_Project1.ViewModel
                
                 ICollectionView view = CollectionViewSource.GetDefaultView(Projects);
                 view.Refresh();
-            }
-            else if (boolFlagEqual == true)
-            {
-                MessageBox.Show("Such record already exists");
-            }
-            else if (boolFlagEmpty == true)
-            {
-                MessageBox.Show("Incorrect input, please, try again");
-            }
         }
         
         public void GetDataProjects()
