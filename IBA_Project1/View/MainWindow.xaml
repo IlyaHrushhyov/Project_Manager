@@ -48,6 +48,8 @@
                                    EditCommandUC2="{Binding UpdateObjectiveCommand}"
                                    AddCommandUC2="{Binding AddObjectiveCommand}"
                                    DeleteCommandUC2="{Binding DeleteObjectiveCommand}"
+                                   TextBoxChangedCommandUC2="{Binding TextBoxChangedCommandUC2}"
+                                   
                     />
 
             </TabItem>

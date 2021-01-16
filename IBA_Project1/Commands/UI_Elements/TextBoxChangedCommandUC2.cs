@@ -2,13 +2,13 @@
 using System;
 using System.Windows.Input;
 
-namespace IBA_Project1.Commands.Objectives
+namespace IBA_Project1.Commands.UI_Elements
 {
-    public class AddObjectiveCommand : ICommand
+    class TextBoxChangedCommandUC2 : ICommand
     {
         public event EventHandler CanExecuteChanged;
         private readonly VModel _vModel;
-        public AddObjectiveCommand(VModel viewModel)
+        public TextBoxChangedCommandUC2(VModel viewModel)
         {
             _vModel = viewModel;
         }
@@ -19,19 +19,18 @@ namespace IBA_Project1.Commands.Objectives
 
         public void Execute(object parameter)
         {
-            if(parameter == null)
+            var newName = (string)parameter;
+            _vModel.TextBoxValueUC2 = newName;
+            if (newName == "")
             {
-               
+                _vModel.CheckForAddInObjectives();
+                _vModel.CheckForUpdateСoincidenceInObjectives(false);
             }
             else
             {
-                var newName = (string)parameter;
-                _vModel.SaveNewObjective(newName);
 
-                //
-
+                _vModel.CheckForAddInObjectives();
                 _vModel.CheckForUpdateСoincidenceInObjectives(true);
-                //
             }
 
         }

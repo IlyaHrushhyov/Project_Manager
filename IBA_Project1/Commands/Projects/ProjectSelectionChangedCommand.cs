@@ -22,17 +22,26 @@ namespace IBA_Project1.Commands
         {
             if (parameter == null)
             {
-                
+                //
+                _VModel.ProjectIsChoosenForObjectives = false;
+                //
 
                 _VModel.CheckForDeleteInProjects(false);
                 _VModel.CheckForUpdateChoosenInProjects(false);
+                
             }
             else
             {
+                //
+                _VModel.ProjectIsChoosenForObjectives = true;
+                //
+
                 var project = (Project)parameter;
 
                 _VModel.CheckForDeleteInProjects(true);
                 _VModel.CheckForUpdateChoosenInProjects(true);
+
+               
 
                 _VModel.Project = project;
                 _VModel.ProjectName = project.Name;

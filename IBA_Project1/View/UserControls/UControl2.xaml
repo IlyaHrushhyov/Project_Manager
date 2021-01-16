@@ -46,17 +46,14 @@
 
             <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"  FontSize="15" Content="Edit" HorizontalAlignment="Center"></Label>
             <Label Grid.Row="1" Grid.Column="0" FontSize="15" Content="Name:"></Label>
-            <TextBox Grid.Row="2" Grid.ColumnSpan="2"  Margin="3" MinWidth="15" MinHeight="20" FontSize="20" Name ="TextBox"
+            <TextBox TextChanged="TextBox_TextChangedUC2" Grid.Row="2" Grid.ColumnSpan="2"  Margin="3" MinWidth="15" MinHeight="20" FontSize="20" Name ="TextBox"
                      Text="{Binding Path=TextBoxBindingUC2, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, ElementName=UserControl2}"></TextBox>
-            <Button Grid.Row="3" Grid.Column ="0" Style="{StaticResource MaterialDesignRaisedButton}"
+            <Button IsEnabled="{Binding EnabledForAddObjectives}" Grid.Row="3" Grid.Column ="0" Style="{StaticResource MaterialDesignRaisedButton}"
                      Height="50" Margin="3" ToolTip="Add new item" Content="Add" Name="AddButton" Click="AddButton_Click"></Button>
-            <Button Grid.Row="3" Grid.Column ="2" Style="{StaticResource MaterialDesignRaisedButton}"
+            <Button IsEnabled="{Binding EnabledForUpdateObjectives}" Grid.Row="3" Grid.Column ="2" Style="{StaticResource MaterialDesignRaisedButton}"
                     Height="50" Margin="3" ToolTip="Update current item" Content="Update" Name="UpdateButton" Click="UpdateButton_Click"></Button>
-            <Button Grid.Row="4" Grid.Column ="0" Grid.ColumnSpan="2" Style="{StaticResource MaterialDesignRaisedButton}"
+            <Button IsEnabled="{Binding EnabledForDeleteObjectives}" Grid.Row="4" Grid.Column ="0" Grid.ColumnSpan="2" Style="{StaticResource MaterialDesignRaisedButton}"
                     Height="50" Margin="3" ToolTip="Delete current item" Content="Delete" Name="DeleteButton" Click="DeleteButton_Click"></Button>
-
-
-
         </Grid>
 
     </Grid>

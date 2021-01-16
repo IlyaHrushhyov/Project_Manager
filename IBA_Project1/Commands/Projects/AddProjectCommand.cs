@@ -27,7 +27,11 @@ namespace IBA_Project1.Commands
             {
                 var newName = (string)parameter;
                 _vModel.SaveNewProject(newName);
+
+                //
                 
+                _vModel.CheckForUpdateСoincidenceInProjects(true);
+                //
             }
            
         }

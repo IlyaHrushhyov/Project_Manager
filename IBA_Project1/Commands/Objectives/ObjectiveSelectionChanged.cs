@@ -24,10 +24,14 @@ namespace IBA_Project1.Commands.Objectives
           
             if(parameter == null)
             {
-               
+                _objectiveVModel.CheckForDeleteInObjectives(false);
+                _objectiveVModel.CheckForUpdateChoosenInObjectives(false);
             }
             else
             {
+                _objectiveVModel.CheckForDeleteInObjectives(true);
+                _objectiveVModel.CheckForUpdateChoosenInObjectives(true);
+
                 var objective = (Objective)parameter;
                 _objectiveVModel.Objective = objective;
                 _objectiveVModel.ObjectiveName = objective.Name;
