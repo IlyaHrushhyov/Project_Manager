@@ -90,6 +90,7 @@
     <Compile Include="Commands\Projects\EditProjectCommand.cs" />
     <Compile Include="Commands\Projects\LoadProjectsCommand.cs" />
     <Compile Include="Commands\Projects\ProjectSelectionChangedCommand.cs" />
+    <Compile Include="Commands\Registration\AddUserCommand.cs" />
     <Compile Include="Commands\UI_Elements\TextBoxChangedCommand.cs" />
     <Compile Include="Commands\UI_Elements\TextBoxChangedCommandUC2.cs" />
     <Compile Include="Migrations\202009282115109_IdMovedToInterface.cs" />
@@ -108,16 +109,18 @@
     <Compile Include="Model\Repository\IRepositoryBase.cs" />
     <Compile Include="Model\Repository\ObjectiveRepository.cs" />
     <Compile Include="Model\Repository\ProjectRepository.cs" />
+    <Compile Include="Model\Repository\UserRepository.cs" />
     <Compile Include="Model\UnitOfWork\UnitOfWork.cs" />
     <Compile Include="ViewModel\IViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
+    <Compile Include="ViewModel\RegistrationVModel.cs" />
     <Compile Include="ViewModel\VModel.cs" />
-    <Compile Include="View\Login\Login.xaml.cs">
-      <DependentUpon>Login.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Registration\Registration.xaml.cs">
+    <Compile Include="View\Registration.xaml.cs">
       <DependentUpon>Registration.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControlsHolder.xaml.cs">
+      <DependentUpon>UserControlsHolder.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\UserControls\UControl2.xaml.cs">
       <DependentUpon>UControl2.xaml</DependentUpon>
@@ -125,10 +128,6 @@
     <Compile Include="View\UserControls\UController.xaml.cs">
       <DependentUpon>UController.xaml</DependentUpon>
     </Compile>
-    <Page Include="View\Login\Login.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -160,7 +159,11 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="View\Registration\Registration.xaml">
+    <Page Include="View\Registration.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControlsHolder.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -223,6 +226,7 @@
   <ItemGroup>
     <Resource Include="Icon.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

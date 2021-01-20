@@ -7,6 +7,7 @@ namespace IBA_Project1.Model
         private Context context = new Context();
         private ProjectRepository projectRepository;
         private ObjectiveRepository objectiveRepository;
+        private UserRepository userRepository;
 
         public ProjectRepository Projects
         {
@@ -24,6 +25,15 @@ namespace IBA_Project1.Model
                 if (objectiveRepository == null)
                     objectiveRepository = new ObjectiveRepository(context);
                 return objectiveRepository;
+            }
+        }
+        public UserRepository Users
+        {
+            get
+            {
+                if (userRepository == null)
+                    userRepository = new UserRepository(context);
+                return userRepository;
             }
         }
         public void Save()
