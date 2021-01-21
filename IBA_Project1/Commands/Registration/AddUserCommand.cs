@@ -23,20 +23,30 @@ namespace IBA_Project1.Commands.Registration
 
         public void Execute(object parameter)
         {
-            if (parameter == null)
-            {
+            /* if (parameter == null)
+             {
 
-            }
-            else
-            {
-                var newUser = parameter;
+             }
+             else
+             {
+                 var newUser = parameter;
+                 _vModel.SaveNewUser(newUser);
+
+                 //
+
+                 //_vModel.CheckForUpdateСoincidenceInProjects(true);
+                 //
+             }*/
+
+           
+            
+                var newUser = new User();
+                
+                newUser.FirstName = _vModel.FirstName;
+                newUser.SecondName = _vModel.SecondName;
+                newUser.Login = _vModel.Login;
+                newUser.Password = _vModel.Password;
                 _vModel.SaveNewUser(newUser);
-
-                //
-
-                //_vModel.CheckForUpdateСoincidenceInProjects(true);
-                //
-            }
 
         }
     }

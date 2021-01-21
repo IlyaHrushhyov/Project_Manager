@@ -1,4 +1,5 @@
-﻿using IBA_Project1.ViewModel;
+﻿using IBA_Project1.Commands.Registration;
+using IBA_Project1.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,16 +21,19 @@ namespace IBA_Project1.View
     /// </summary>
     public partial class Registration : Window
     {
-        public Registration()
+        MainWindow loginWindow;
+       
+        public Registration(MainWindow mainWindow)
         {
             InitializeComponent();
             DataContext = new RegistrationVModel();
+            loginWindow = mainWindow;
         }
-       
+        
         private void Login_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
+           
+            loginWindow.Show();
             Close();
         }
         private void Reset_Click(object sender, RoutedEventArgs e)
@@ -41,7 +45,7 @@ namespace IBA_Project1.View
             textBoxFirstName.Text = "";
             textBoxSecondName.Text = "";
             textBoxLogin.Text = "";
-            textBoxPassword.Password = "";
+            textBoxPassword.Text = "";
         }
         public ICommand AddCommand
         {
@@ -58,16 +62,21 @@ namespace IBA_Project1.View
             DependencyProperty.Register("AddCommand", typeof(ICommand), typeof(Registration), new PropertyMetadata(null));
         private void Submit_Click(object sender, RoutedEventArgs e)
         {
-            if (AddCommand != null)
-            {
-                var newUser = new User();
-                newUser.FirstName = textBoxFirstName.Text;
-                newUser.SecondName = textBoxSecondName.Text;
-                newUser.Login = textBoxLogin.Text;
-                newUser.Password = textBoxPassword.Password;
-                AddCommand.Execute(newUser);
+            /* if (AddCommand != null)
+             {
+                 var newUser = new User();
+                 newUser.FirstName = textBoxFirstName.Text;
+                 newUser.SecondName = textBoxSecondName.Text;
+                 newUser.Login = textBoxLogin.Text;
+                 newUser.Password = textBoxPassword.Password;
+                 AddCommand.Execute(newUser);*/
 
-            }
+            //}
+            
+            //
+            // Show UserControlsHolder
+            //
+            Close();
         }
 
     }

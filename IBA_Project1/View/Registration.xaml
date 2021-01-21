@@ -14,6 +14,7 @@
         FontFamily="{DynamicResource MaterialDesignFont}"
         Title="Project manager" Height="450" Width="800" MinHeight="270" MinWidth="400" ResizeMode="CanResizeWithGrip"
         WindowStartupLocation="CenterScreen"
+        
         >
    
     <Grid  Height="350" Width="525">
@@ -44,22 +45,22 @@
                 <RowDefinition Height="252*" />
        
             </Grid.RowDefinitions>
-            <TextBlock Height="20" HorizontalAlignment="Left" Margin="67,0,0,0" x:Name ="errormessage" VerticalAlignment="Top" Width="247"  OpacityMask="Crimson" Foreground="#FFE5572C" />
+            
             <TextBlock Height="23" HorizontalAlignment="Left" Margin="67,20,0,0" Name="textBlockFirstname" Text="First Name:" VerticalAlignment="Top" Width="110" />
             <TextBlock Height="23" HorizontalAlignment="Left" Margin="67,50,0,0" Name="textBlockLastName" Text="Second Name:" VerticalAlignment="Top" Width="110" />
             <TextBlock Height="23" HorizontalAlignment="Left" Margin="67,80,0,0" Name="textBlockEmailId" Text="Login:" VerticalAlignment="Top" Width="110" />
             <TextBlock Height="23" HorizontalAlignment="Left" Margin="67,107,0,0" Name="textBlockPassword" Text="Password:" VerticalAlignment="Top" Width="110"  />
         
           
-            <TextBox Height="23" HorizontalAlignment="Left" Margin="183,20,0,0" Name="textBoxFirstName" VerticalAlignment="Top" Width="222" />
-            <TextBox Height="23" HorizontalAlignment="Left" Margin="183,50,0,0" Name="textBoxSecondName" VerticalAlignment="Top" Width="222" />
-            <TextBox Height="23" HorizontalAlignment="Left" Margin="183,80,0,0" Name="textBoxLogin" VerticalAlignment="Top" Width="222" />
-            <PasswordBox Height="23" HorizontalAlignment="Left" Margin="183,107,0,0" Name="textBoxPassword" VerticalAlignment="Top" Width="222" />
+            <TextBox Text="{Binding FirstName}" Height="23" HorizontalAlignment="Left" Margin="183,20,0,0" Name="textBoxFirstName" VerticalAlignment="Top" Width="222" />
+            <TextBox Text="{Binding SecondName}" Height="23" HorizontalAlignment="Left" Margin="183,50,0,0" Name="textBoxSecondName" VerticalAlignment="Top" Width="222" />
+            <TextBox Text="{Binding Login}" Height="23" HorizontalAlignment="Left" Margin="183,80,0,0" Name="textBoxLogin" VerticalAlignment="Top" Width="222" />
+           
+            <TextBox Text="{Binding Password}"  Height="23" HorizontalAlignment="Left" Margin="183,107,0,0" Name="textBoxPassword" VerticalAlignment="Top" Width="222"  />
 
 
-
-            <Button Command="{Binding Path=AddUserCommand}" Content="Submit" Height="23" HorizontalAlignment="Left" Margin="183,204,0,0" Name="Submit" VerticalAlignment="Top" Width="70" Click="Submit_Click" />
-            <Button  Content="Reset" Height="23" HorizontalAlignment="Left" Margin="259,204,0,0" VerticalAlignment="Top" Width="70" Click="Reset_Click" />
+            <Button Command="{Binding AddUserCommand}" Content="Submit" Height="23" HorizontalAlignment="Left" Margin="170,204,0,0" Name="Submit" VerticalAlignment="Top" Width="80" Click="Submit_Click" />
+            <Button  Content="Reset" Height="23" HorizontalAlignment="Left" Margin="259,204,0,0" VerticalAlignment="Top" Width="80" Click="Reset_Click" />
                     
         </Grid>
     </Grid>
