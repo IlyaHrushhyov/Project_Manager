@@ -80,6 +80,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commands\Login\LoadUsersCommand.cs" />
     <Compile Include="Commands\Objectives\AddObjectiveCommand.cs" />
     <Compile Include="Commands\Objectives\DeleteObjective.cs" />
     <Compile Include="Commands\Objectives\EditObjectiveCommand.cs" />
@@ -112,15 +113,19 @@
     <Compile Include="Model\Repository\UserRepository.cs" />
     <Compile Include="Model\UnitOfWork\UnitOfWork.cs" />
     <Compile Include="ViewModel\IViewModel.cs" />
+    <Compile Include="ViewModel\LoginVModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\RegistrationVModel.cs" />
     <Compile Include="ViewModel\VModel.cs" />
-    <Compile Include="View\Registration.xaml.cs">
-      <DependentUpon>Registration.xaml</DependentUpon>
+    <Compile Include="View\Pages\LoginPage.xaml.cs">
+      <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UserControlsHolder.xaml.cs">
-      <DependentUpon>UserControlsHolder.xaml</DependentUpon>
+    <Compile Include="View\Pages\RegisterPage.xaml.cs">
+      <DependentUpon>RegisterPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pages\UserControlsHolderPage.xaml.cs">
+      <DependentUpon>UserControlsHolderPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\UserControls\UControl2.xaml.cs">
       <DependentUpon>UControl2.xaml</DependentUpon>
@@ -159,11 +164,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="View\Registration.xaml">
+    <Page Include="View\Pages\LoginPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\UserControlsHolder.xaml">
+    <Page Include="View\Pages\RegisterPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\UserControlsHolderPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

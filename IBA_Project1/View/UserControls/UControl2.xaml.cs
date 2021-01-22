@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using IBA_Project1.ViewModel;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -9,6 +10,7 @@ namespace IBA_Project1.View.UserControls
         public UControl2()
         {
             InitializeComponent();
+            DataContext = new VModel();
         }
 
         public string TextBoxBindingUC2

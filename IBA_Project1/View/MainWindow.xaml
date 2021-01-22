@@ -17,21 +17,6 @@
         Title="Project manager" Height="450" Width="800" MinHeight="270" MinWidth="400" ResizeMode="CanResizeWithGrip"
         WindowStartupLocation="CenterScreen" >
     <Grid>
-        <TextBlock Height="23" HorizontalAlignment="Left" Margin="10,10,0,0" Name="LoginHead" Text="Login" VerticalAlignment="Top" FontSize="17" FontStretch="ExtraCondensed"/>
-        
-        <TextBlock Height="23" HorizontalAlignment="Left" Margin="66,120,0,0" Name="textBlockLogin" Text="Login:" VerticalAlignment="Top" Width="67" />
-        <TextBlock Height="23" HorizontalAlignment="Left" Margin="58,168,0,0" Name="textBlockPassword" Text="Password:" VerticalAlignment="Top" Width="77" />
-        <TextBox Height="23" HorizontalAlignment="Left" Margin="118,115,0,0" Name="textBoxLogin" VerticalAlignment="Top" Width="247" />
-        <PasswordBox Height="23" HorizontalAlignment="Left" Margin="118,168,0,0" Name="textBoxPassword" VerticalAlignment="Top" Width="247" />
-        <Button Click="button1_Click" Content="Login" Height="30" HorizontalAlignment="Left" Margin="118,211,0,0" Name="button1" VerticalAlignment="Top" Width="104" />
-        <TextBlock Height="23" HorizontalAlignment="Left" x:Name ="errormessage" VerticalAlignment="Top" Width="247" Margin="118,253,0,0"  OpacityMask="Crimson" Foreground="#FFE5572C"  />
-        <TextBlock Height="50" HorizontalAlignment="Left" Margin="120,300,0,0" Name="textBlockHeading" VerticalAlignment="Top" FontSize="12" FontStyle="Italic" Padding="5">  
-            Note: Please login here to get access to functional of this application. If you are new here then <LineBreak />
-            please click on  
-            <TextBlock>  
-                 <Hyperlink Click="buttonRegister_Click" FontSize="14" FontStyle="Normal">Register</Hyperlink>  
-            </TextBlock>  
-            button  
-        </TextBlock>
+        <Frame Name="MainFrame" Background="White" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>

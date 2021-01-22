@@ -61,9 +61,6 @@ namespace IBA_Project1.ViewModel
         public ICommand AddUserCommand { get; set; }
         public async void SaveNewUser(object obj)
         {
-            
-            /*UserForAdding = (User)obj;*/
-            
             await unitOfWork.Users.SaveNew((User)obj);
             unitOfWork.Save();
 
