@@ -12,7 +12,7 @@ namespace IBA_Project1.View.UserControls
         public UController()
         {
             InitializeComponent();
-            DataContext = new VModel();
+            //DataContext = new VModel();
         }
 
         public string TextBoxBinding

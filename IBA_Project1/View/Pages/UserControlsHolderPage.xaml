@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:IBA_Project1.View.Pages"
       xmlns:views="clr-namespace:IBA_Project1.View.UserControls"
-      xmlns:viewmodels="clr-namespace:IBA_Project1.ViewModel"
+      
       mc:Ignorable="d" 
      TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
@@ -25,7 +25,6 @@
                         <TextBlock Margin="3">Projects</TextBlock>
                     </StackPanel>
                 </TabItem.Header>
-
                 <views:UController DataContext="{Binding VModel}"
                                    LoadCommand="{Binding LoadProjectsCommand}"
                                    SelectedChangedCommand="{Binding SelectionProjectChangedCommand}"
@@ -35,6 +34,7 @@
                                    DeleteCommand="{Binding DeleteProjectCommand}"
                                    TextBoxChangedCommand="{Binding TextBoxChangedCommand}"
                                    />
+
 
             </TabItem>
             <TabItem x:Name="tabletsTab">

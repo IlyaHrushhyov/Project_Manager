@@ -24,7 +24,8 @@ namespace IBA_Project1.View.Pages
         public UserControlsHolderPage()
         {
             InitializeComponent();
-            DataContext = new VModel();
+            //DataContext = new VModel();
+            DataContext = new MainViewModel();
         }
     }
 }
