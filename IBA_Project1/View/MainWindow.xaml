@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:views="clr-namespace:IBA_Project1.View.UserControls"
         xmlns:viewmodels="clr-namespace:IBA_Project1.ViewModel"
-        
+        xmlns:pages="clr-namespace:IBA_Project1.View.Pages"
         mc:Ignorable="d"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
@@ -16,7 +16,13 @@
         FontFamily="{DynamicResource MaterialDesignFont}"
         Title="Project manager" Height="450" Width="800" MinHeight="270" MinWidth="400" ResizeMode="CanResizeWithGrip"
         WindowStartupLocation="CenterScreen" >
+
     <Grid>
         <Frame Name="MainFrame" Background="White" NavigationUIVisibility="Hidden"/>
+        
+        
+                     
+        
+   
     </Grid>
 </Window>

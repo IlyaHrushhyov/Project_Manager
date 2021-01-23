@@ -16,25 +16,57 @@ namespace IBA_Project1.ViewModel
         public LoginVModel()
         {
             unitOfWork = new UnitOfWork();
-            Page_Loaded = new LoadUsersCommand(this);
+            PageLoadedCommand = new LoadUsersCommand(this);
             EnabledToLogin = false;
         }
         public ObservableCollection<User> Users { get; private set; }
-        public bool EnabledToLogin { get; private set; }
-        public string TextBoxLogin { get; private set; }
-        public string TextBoxPassword { get; private set; }
-        public ICommand Page_Loaded { get; set; }
+        private bool enabledToLogin;
+        public bool EnabledToLogin
+        {
+            get => enabledToLogin;
+            set
+            {
+                enabledToLogin = value;
+                OnPropertyChanged(nameof(EnabledToLogin));
+            }
+        }
+        public string TextBoxLogin {private get; set; }
+       /* private string textBoxLogin;
+        public string TextBoxLogin
+        {
+            get => textBoxLogin;
+            set
+            {
+                textBoxLogin = value;
+                OnPropertyChanged(nameof(TextBoxLogin));
+            }
+        }*/
+        public string TextBoxPassword {private get; set; }
+       /* private string textBoxPassword;
+        public string TextBoxPassword
+        {
+            get => textBoxPassword;
+            set
+            {
+                textBoxPassword = value;
+                OnPropertyChanged(nameof(TextBoxPassword));
+            }
+        }*/
+        public ICommand PageLoadedCommand { get; set; }
         public void GetDataUsers()
         {
             var users = unitOfWork.Users.Get().Result.ToList();
             Users = new ObservableCollection<User>((IEnumerable<User>)users);
         }
-        private void CheckForLogin()
+        public void CheckForLogin()
         {
-            var user = Users.First(p => p.Login.Equals(TextBoxLogin));
-            if (user?.Password == TextBoxPassword)
+            var user = Users.FirstOrDefault(p => p.Login.Equals(TextBoxLogin));
+            if (user != null)
             {
-                EnabledToLogin = true;
+                if (user.Password.Equals(TextBoxPassword))
+                {
+                    EnabledToLogin = true;
+                }
             }
         }
     }

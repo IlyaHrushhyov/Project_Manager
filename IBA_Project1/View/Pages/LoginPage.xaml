@@ -5,7 +5,10 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:IBA_Project1.View.Pages"
       mc:Ignorable="d"
-      Loaded="Page_Loaded"
+      xmlns:vm="clr-namespace:IBA_Project1.ViewModel"
+      xmlns:c="clr-namespace:IBA_Project1.Commands.Login"
+      Loaded="PageLoaded" 
+      
      TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
         TextElement.FontSize="13"
@@ -14,15 +17,19 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
         Title="Project manager" Height="450" Width="800" MinHeight="270" MinWidth="400"
+        
       >
-
+    <Page.Resources>
+        <vm:LoginVModel x:Key="loginVModel"/>
+        
+    </Page.Resources>
     <Grid>
         <TextBlock Height="23" HorizontalAlignment="Left" Margin="10,10,0,0" Name="LoginHead" Text="Login" VerticalAlignment="Top" FontSize="17" FontStretch="ExtraCondensed"/>
 
         <TextBlock Height="23" HorizontalAlignment="Left" Margin="66,120,0,0" Name="textBlockLogin" Text="Login:" VerticalAlignment="Top" Width="67" />
         <TextBlock Height="23" HorizontalAlignment="Left" Margin="58,168,0,0" Name="textBlockPassword" Text="Password:" VerticalAlignment="Top" Width="77" />
-        <TextBox Height="23" HorizontalAlignment="Left" Margin="118,115,0,0" Name="textBoxLogin" VerticalAlignment="Top" Width="247" />
-        <TextBox Height="23" HorizontalAlignment="Left" Margin="118,168,0,0" Name="textBoxPassword" VerticalAlignment="Top" Width="247" />
+        <TextBox Text="{Binding Path=TextBoxLogin, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" TextChanged="textBoxLogin_TextChanged" Height="23" HorizontalAlignment="Left" Margin="118,115,0,0" Name="textBoxLogin" VerticalAlignment="Top" Width="247" />
+        <TextBox Text="{Binding Path=TextBoxPassword, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" TextChanged="textBoxPassword_TextChanged" Height="23" HorizontalAlignment="Left" Margin="118,168,0,0" Name="textBoxPassword" VerticalAlignment="Top" Width="247" />
         <Button IsEnabled="{Binding EnabledToLogin}" Click="buttonLogin_Click" Content="Login" Height="30" HorizontalAlignment="Left" Margin="118,211,0,0" Name="buttonLogin" VerticalAlignment="Top" Width="104" />
         <TextBlock Height="23" HorizontalAlignment="Left" x:Name ="errormessage" VerticalAlignment="Top" Width="247" Margin="118,253,0,0"  OpacityMask="Crimson" Foreground="#FFE5572C"  />
         <TextBlock Height="50" HorizontalAlignment="Left" Margin="120,300,0,0" Name="textBlockHeading" VerticalAlignment="Top" FontSize="12" FontStyle="Italic" Padding="5">  
