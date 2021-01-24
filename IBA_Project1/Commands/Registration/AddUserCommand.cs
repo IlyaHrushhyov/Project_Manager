@@ -41,12 +41,16 @@ namespace IBA_Project1.Commands.Registration
            
             
                 var newUser = new User();
-                
-                newUser.FirstName = _vModel.FirstName;
-                newUser.SecondName = _vModel.SecondName;
-                newUser.Login = _vModel.Login;
-                newUser.Password = _vModel.Password;
-                _vModel.SaveNewUser(newUser);
+
+            /* newUser.FirstName = _vModel.TextBoxFirstName;
+             newUser.SecondName = _vModel.TextBoxSecondName;
+             newUser.Login = _vModel.TextBoxLogin;
+             newUser.Password = _vModel.TextBoxPassword;*/
+            newUser.FirstName = _vModel.FirstName;
+            newUser.SecondName = _vModel.SecondName;
+            newUser.Login = _vModel.Login;
+            newUser.Password = _vModel.Password;
+            _vModel.SaveNewUser(newUser);
 
         }
     }

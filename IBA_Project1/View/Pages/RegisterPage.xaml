@@ -2,7 +2,9 @@
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:extensions="using:Microsoft.Toolkit.Uwp.UI.Extensions"
+      
       xmlns:local="clr-namespace:IBA_Project1.View.Pages"
       mc:Ignorable="d" 
       TextElement.Foreground="{DynamicResource MaterialDesignBody}"
@@ -12,7 +14,9 @@
         TextOptions.TextRenderingMode="Auto"
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        Title="Project manager" Height="450" Width="800" MinHeight="270" MinWidth="400">
+        Title="Project manager" Height="450" Width="800" MinHeight="270" MinWidth="400"
+      x:Name="registerPage"
+      Loaded="registerPage_Loaded">
 
     <Grid  Height="350" Width="525">
         <TextBlock Height="23" HorizontalAlignment="Left" Margin="10,5,0,0" Name="textBlockHeading" Text="Registration:" VerticalAlignment="Top" Width="110"  FontSize="17" FontStretch="ExtraCondensed"/>
@@ -49,14 +53,24 @@
             <TextBlock Height="23" HorizontalAlignment="Left" Margin="67,107,0,0" Name="textBlockPassword" Text="Password:" VerticalAlignment="Top" Width="110"  />
 
 
-            <TextBox Text="{Binding FirstName}" Height="23" HorizontalAlignment="Left" Margin="183,20,0,0" Name="textBoxFirstName" VerticalAlignment="Top" Width="222" />
-            <TextBox Text="{Binding SecondName}" Height="23" HorizontalAlignment="Left" Margin="183,50,0,0" Name="textBoxSecondName" VerticalAlignment="Top" Width="222" />
-            <TextBox Text="{Binding Login}" Height="23" HorizontalAlignment="Left" Margin="183,80,0,0" Name="textBoxLogin" VerticalAlignment="Top" Width="222" />
+            <TextBox Text="{Binding FirstName, ValidatesOnExceptions=True, UpdateSourceTrigger=PropertyChanged}" Validation.ErrorTemplate="{StaticResource errorTemplate}" 
+                     TextChanged="textBox_TextChanged" Height="23" HorizontalAlignment="Left" Margin="183,20,0,0" Name="textBoxFirstName" VerticalAlignment="Top" Width="222" />
 
-            <TextBox Text="{Binding Password}"  Height="23" HorizontalAlignment="Left" Margin="183,107,0,0" Name="textBoxPassword" VerticalAlignment="Top" Width="222"  />
+            <TextBox Text="{Binding SecondName, ValidatesOnExceptions=True, UpdateSourceTrigger=PropertyChanged}" Validation.ErrorTemplate="{StaticResource errorTemplate}"
+                     TextChanged="textBox_TextChanged" Height="23" HorizontalAlignment="Left" Margin="183,50,0,0" Name="textBoxSecondName" VerticalAlignment="Top" Width="222" />
+            <TextBox Text="{Binding Login , ValidatesOnExceptions=True, UpdateSourceTrigger=PropertyChanged}" Validation.ErrorTemplate="{StaticResource errorTemplate}"
+                     TextChanged="textBox_TextChanged" Height="23" HorizontalAlignment="Left" Margin="183,80,0,0" Name="textBoxLogin" VerticalAlignment="Top" Width="222" />
 
+            <TextBox Text="{Binding Password, ValidatesOnExceptions=True, UpdateSourceTrigger=PropertyChanged}" Validation.ErrorTemplate="{StaticResource errorTemplate}"
+                     TextChanged="textBox_TextChanged"  Height="23" HorizontalAlignment="Left" Margin="183,107,0,0" Name="textBoxPassword" VerticalAlignment="Top" Width="222"  />
 
-            <Button Command="{Binding AddUserCommand}" Content="Submit" Height="23" HorizontalAlignment="Left" Margin="170,204,0,0" Name="Submit" VerticalAlignment="Top" Width="80" Click="Submit_Click" />
+            <Button IsEnabled="{Binding EnabledToAdd}" Command="{Binding AddUserCommand}" Content="Submit" 
+                    Height="23" HorizontalAlignment="Left" Margin="170,204,0,0" Name="Submit" VerticalAlignment="Top" Width="80" Click="Submit_Click">
+                <Button.CommandBindings>
+                    <CommandBinding Command="Save"
+                                    Executed="CommandBinding_Executed" CanExecute="CommandBinding_CanExecute"/>
+                </Button.CommandBindings>
+            </Button>
             <Button  Content="Reset" Height="23" HorizontalAlignment="Left" Margin="259,204,0,0" VerticalAlignment="Top" Width="80" Click="Reset_Click" />
 
         </Grid>

@@ -26,6 +26,7 @@ namespace IBA_Project1.View.Pages
         {
             InitializeComponent();
             DataContext = new LoginVModel();
+            //DataContext = new MainViewModel - try this
             viewModel = (LoginVModel)DataContext;
         }
         LoginVModel viewModel;
