@@ -28,7 +28,7 @@ namespace IBA_Project1.ViewModel
                 MemberName = name
             });
         }
-        //public string TextBoxFirstName { get; set; }
+        
         private string firstName;
         [Required(ErrorMessage = "Must not be empty")]
         [StringLength(20, MinimumLength =2, ErrorMessage = "Must be 2-20 characters")]
@@ -44,7 +44,7 @@ namespace IBA_Project1.ViewModel
             }
         }
 
-        //public string TextBoxSecondName {get; set; }
+        
         private string secondName;
         [Required(ErrorMessage = "Must not be empty")]
         [StringLength(20, MinimumLength = 2, ErrorMessage = "Must be 2-20 characters")]
@@ -59,7 +59,7 @@ namespace IBA_Project1.ViewModel
                 OnPropertyChanged(nameof(SecondName));
             }
         }
-        //public string TextBoxLogin { get; set; }
+        
         private string login;
         [Required(ErrorMessage = "Must not be empty")]
         [StringLength(20, MinimumLength = 5, ErrorMessage = "Must be 5-20 characters")]
@@ -74,7 +74,7 @@ namespace IBA_Project1.ViewModel
                 OnPropertyChanged(nameof(Login));
             }
         }
-        //public string TextBoxPassword { get; set; }
+        
         private string password;
         [Required(ErrorMessage = "Must not be empty")]
         [StringLength(20, MinimumLength = 5, ErrorMessage = "Must be 5-20 characters")]
@@ -104,18 +104,15 @@ namespace IBA_Project1.ViewModel
         {
             await unitOfWork.Users.SaveNew((User)obj);
             unitOfWork.Save();
-
-            //CheckForAddInProjects();
-
         }
         public void GetDataUsers()
         {
             var users = unitOfWork.Users.Get().Result.ToList();
             Users = new ObservableCollection<User>((IEnumerable<User>)users);
         }
-        public void CheckForAdding(bool flag)
+        public void CheckForAdding()
         {
-            EnabledToAdd = flag;
+            
             var user = Users.FirstOrDefault(p => p.Login.Equals(Login));
             if (user != null)
             {

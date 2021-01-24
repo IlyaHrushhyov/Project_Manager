@@ -19,10 +19,5 @@
 
     <Grid>
         <Frame Name="MainFrame" Background="White" NavigationUIVisibility="Hidden"/>
-        
-        
-                     
-        
-   
     </Grid>
 </Window>

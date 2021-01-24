@@ -3,6 +3,7 @@ using IBA_Project1.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +21,13 @@ namespace IBA_Project1.ViewModel
             EnabledToLogin = false;
         }
         public ObservableCollection<User> Users { get; private set; }
+        private void ValidateProperty<T>(T value, string name)
+        {
+            Validator.ValidateProperty(value, new ValidationContext(this, null, null)
+            {
+                MemberName = name
+            });
+        }
         private bool enabledToLogin;
         public bool EnabledToLogin
         {
@@ -30,28 +38,36 @@ namespace IBA_Project1.ViewModel
                 OnPropertyChanged(nameof(EnabledToLogin));
             }
         }
-        public string TextBoxLogin {private get; set; }
-       /* private string textBoxLogin;
+        
+        private string textBoxLogin;
+        [Required(ErrorMessage = "Must not be empty")]
+        [StringLength(20, MinimumLength = 5, ErrorMessage = "Must be 5-20 characters")]
+        [RegularExpression(@"[a-zA-Z_.0-9]+$", ErrorMessage = "Unacceptable characters")]
         public string TextBoxLogin
         {
             get => textBoxLogin;
             set
             {
+                ValidateProperty(value, "TextBoxLogin");
                 textBoxLogin = value;
                 OnPropertyChanged(nameof(TextBoxLogin));
             }
-        }*/
-        public string TextBoxPassword {private get; set; }
-       /* private string textBoxPassword;
+        }
+       
+        private string textBoxPassword;
+        [Required(ErrorMessage = "Must not be empty")]
+        [StringLength(20, MinimumLength = 5, ErrorMessage = "Must be 5-20 characters")]
+        [RegularExpression(@"[a-zA-Z_.0-9]+$", ErrorMessage = "Unacceptable characters")]
         public string TextBoxPassword
         {
             get => textBoxPassword;
             set
             {
+                ValidateProperty(value, "TextBoxPassword");
                 textBoxPassword = value;
                 OnPropertyChanged(nameof(TextBoxPassword));
             }
-        }*/
+        }
         public ICommand PageLoadedCommand { get; set; }
         public void GetDataUsers()
         {
@@ -66,6 +82,10 @@ namespace IBA_Project1.ViewModel
                 if (user.Password.Equals(TextBoxPassword))
                 {
                     EnabledToLogin = true;
+                }
+                else
+                {
+                    EnabledToLogin = false;
                 }
             }
         }

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -26,7 +27,6 @@ namespace IBA_Project1.View.Pages
         {
             InitializeComponent();
             DataContext = new LoginVModel();
-            //DataContext = new MainViewModel - try this
             viewModel = (LoginVModel)DataContext;
         }
         LoginVModel viewModel;
@@ -39,28 +39,25 @@ namespace IBA_Project1.View.Pages
         {
             NavigationService.Navigate(new UserControlsHolderPage());
         }
-
-        /*private void Page_Loaded(object sender, RoutedEventArgs e)
+        private void textBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            viewModel.Page_Loaded.Execute(null);
-        }*/
 
-        private void textBoxLogin_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            viewModel.TextBoxLogin = textBoxLogin.Text;
-            viewModel.CheckForLogin();
+            var patternLogin = @"[a-zA-Z_.0-9]{5,20}$";
+            var patternPassword = @"[a-zA-Z_.0-9]{5,20}$";
+
+            if (Regex.IsMatch(textBoxLogin.Text, patternLogin) && Regex.IsMatch(textBoxPassword.Text, patternPassword))
+            {
+         
+                viewModel.CheckForLogin();
+            }
+            else
+            {
+                viewModel.EnabledToLogin = false;
+            }
         }
 
-        private void textBoxPassword_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            viewModel.TextBoxPassword = textBoxPassword.Text;
-            viewModel.CheckForLogin();
-        }
-
-        
         private void PageLoaded(object sender, RoutedEventArgs e)
         {
-          
             viewModel.GetDataUsers();
         }
     }

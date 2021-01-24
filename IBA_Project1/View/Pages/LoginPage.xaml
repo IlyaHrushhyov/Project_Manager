@@ -26,13 +26,20 @@
     <Grid>
         <TextBlock Height="23" HorizontalAlignment="Left" Margin="10,10,0,0" Name="LoginHead" Text="Login" VerticalAlignment="Top" FontSize="17" FontStretch="ExtraCondensed"/>
 
-        <TextBlock Height="23" HorizontalAlignment="Left" Margin="66,120,0,0" Name="textBlockLogin" Text="Login:" VerticalAlignment="Top" Width="67" />
-        <TextBlock Height="23" HorizontalAlignment="Left" Margin="58,168,0,0" Name="textBlockPassword" Text="Password:" VerticalAlignment="Top" Width="77" />
-        <TextBox Text="{Binding Path=TextBoxLogin, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" TextChanged="textBoxLogin_TextChanged" Height="23" HorizontalAlignment="Left" Margin="118,115,0,0" Name="textBoxLogin" VerticalAlignment="Top" Width="247" />
-        <TextBox Text="{Binding Path=TextBoxPassword, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" TextChanged="textBoxPassword_TextChanged" Height="23" HorizontalAlignment="Left" Margin="118,168,0,0" Name="textBoxPassword" VerticalAlignment="Top" Width="247" />
-        <Button IsEnabled="{Binding EnabledToLogin}" Click="buttonLogin_Click" Content="Login" Height="30" HorizontalAlignment="Left" Margin="118,211,0,0" Name="buttonLogin" VerticalAlignment="Top" Width="104" />
-        <TextBlock Height="23" HorizontalAlignment="Left" x:Name ="errormessage" VerticalAlignment="Top" Width="247" Margin="118,253,0,0"  OpacityMask="Crimson" Foreground="#FFE5572C"  />
-        <TextBlock Height="50" HorizontalAlignment="Left" Margin="120,300,0,0" Name="textBlockHeading" VerticalAlignment="Top" FontSize="12" FontStyle="Italic" Padding="5">  
+        <TextBlock Height="23" HorizontalAlignment="Left" Margin="66,120,0,0" 
+                   Name="textBlockLogin" Text="Login:" VerticalAlignment="Top" Width="67" />
+        <TextBlock Height="23" HorizontalAlignment="Left" Margin="58,168,0,0"
+                   Name="textBlockPassword" Text="Password:" VerticalAlignment="Top" Width="77" />
+        <TextBox Text="{Binding Path=TextBoxLogin,  ValidatesOnExceptions=True, UpdateSourceTrigger=PropertyChanged}" Validation.ErrorTemplate="{StaticResource errorTemplate}" 
+                 TextChanged="textBox_TextChanged" Height="23" HorizontalAlignment="Left" Margin="118,115,0,0" Name="textBoxLogin" VerticalAlignment="Top" Width="247" />
+        <TextBox Text="{Binding Path=TextBoxPassword,  ValidatesOnExceptions=True, UpdateSourceTrigger=PropertyChanged}"  Validation.ErrorTemplate="{StaticResource errorTemplate}" 
+                 TextChanged="textBox_TextChanged" Height="23" HorizontalAlignment="Left" Margin="118,168,0,0" Name="textBoxPassword" VerticalAlignment="Top" Width="247" />
+        <Button IsEnabled="{Binding EnabledToLogin}" Click="buttonLogin_Click" 
+                Content="Login" Height="30" HorizontalAlignment="Left" Margin="118,211,0,0" Name="buttonLogin" VerticalAlignment="Top" Width="104" />
+        <TextBlock Height="23" HorizontalAlignment="Left" x:Name ="errormessage"
+                   VerticalAlignment="Top" Width="247" Margin="118,253,0,0"  OpacityMask="Crimson" Foreground="#FFE5572C"  />
+        <TextBlock Height="50" HorizontalAlignment="Left" Margin="120,300,0,0" Name="textBlockHeading"
+                   VerticalAlignment="Top" FontSize="12" FontStyle="Italic" Padding="5">  
             Note: Please login here to get access to functional of this application. If you are new here then <LineBreak />
             please click on  
             <TextBlock>  
